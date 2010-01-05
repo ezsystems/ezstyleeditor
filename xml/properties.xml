@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="utf-8"?>
+<properties>
+  <category name="Font">
+    <property name="font-family" type="font">
+      <propertyoption value="Arial, Helvetica, sans-serif"/>
+      <propertyoption value="Times New Roman, Times, serif"/>
+      <propertyoption value="Courier New, Courier, monospace"/>
+      <propertyoption value="Georgia, Times New Roman, Times, serif"/>
+      <propertyoption value="Verdana, Arial, Helvetica, sans-serif"/>
+      <propertyoption value="Geneva, Arial, Helvetica, sans-serif"/>
+    </property>
+    <property name="font-size" type="keyword-length">
+      <propertyoption value="9"/>
+      <propertyoption value="10"/>
+      <propertyoption value="12"/>
+      <propertyoption value="14"/>
+      <propertyoption value="16"/>
+      <propertyoption value="18"/>
+      <propertyoption value="24"/>
+      <propertyoption value="36"/>
+      <propertyoption value="xx-small"/>
+      <propertyoption value="x-small"/>
+      <propertyoption value="small"/>
+      <propertyoption value="medium"/>
+      <propertyoption value="large"/>
+      <propertyoption value="x-large"/>
+      <propertyoption value="xx-large"/>
+      <propertyoption value="smaller"/>
+      <propertyoption value="larger"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="color" type="color"></property>
+    <property name="font-style" type="enumerated">
+      <propertyoption value="normal"/>
+      <propertyoption value="italic"/>
+      <propertyoption value="oblique"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="line-height" type="keyword-length">
+      <propertyoption value="normal"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="font-weight" type="enumerated">
+      <propertyoption value="normal" />
+      <propertyoption value="bold" />
+      <propertyoption value="bolder" />
+      <propertyoption value="lighter" />
+      <propertyoption value="100" />
+      <propertyoption value="200" />
+      <propertyoption value="300" />
+      <propertyoption value="400" />
+      <propertyoption value="500" />
+      <propertyoption value="600" />
+      <propertyoption value="700" />
+      <propertyoption value="800" />
+      <propertyoption value="900" />
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="text-transform" type="enumerated">
+      <propertyoption value="capitalize" />
+      <propertyoption value="uppercase" />
+      <propertyoption value="lowercase" />
+      <propertyoption value="none" />
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="font-variant" type="enumerated">
+      <propertyoption value="normal" />
+      <propertyoption value="small-caps" />
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="text-decoration" type="enumerated">
+      <propertyoption value="none" />
+      <propertyoption value="underline" />
+      <propertyoption value="overline" />
+      <propertyoption value="line-through" />
+      <propertyoption value="blink" />
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="font" type="string"></property>
+    <property name="text-shadow" type="string" showinmenu="false"></property>
+    <property name="font-size-adjust" type="string" showinmenu="false"></property>
+    <property name="font-stretch" type="enumerated" showinmenu="false">
+      <propertyoption value="normal"/>
+      <propertyoption value="wider"/>
+      <propertyoption value="narrower"/>
+      <propertyoption value="ultra-condensed"/>
+      <propertyoption value="extra-condensed"/>
+      <propertyoption value="condensed"/>
+      <propertyoption value="semi-condensed"/>
+      <propertyoption value="semi-expanded"/>
+      <propertyoption value="expanded"/>
+      <propertyoption value="extra-expanded"/>
+      <propertyoption value="ultra-expanded"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="direction" type="enumerated" showinmenu="false">
+      <propertyoption value="ltr"/>
+      <propertyoption value="rtl"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="unicode-bidi" type="string"  showinmenu="false"></property>
+  </category>
+  <category name="Background">
+    <property name="background" type="string"></property>
+    <property name="background-color" type="color"></property>
+    <property name="background-image" type="relativepath"></property>
+    <property name="background-attachment" type="enumerated">
+      <propertyoption value="fixed" />
+      <propertyoption value="scroll" />
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="background-repeat" type="enumerated">
+      <propertyoption value="no-repeat" />
+      <propertyoption value="repeat" />
+      <propertyoption value="repeat-x" />
+      <propertyoption value="repeat-y" />
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="background-position" type="enumerated">
+      <propertyoption value="top left" />
+      <propertyoption value="bottom left" />
+      <propertyoption value="top center" />
+      <propertyoption value="bottom center" />
+      <propertyoption value="top right"/>
+      <propertyoption value="bottom right"/>
+      <propertyoption value="center left"/>
+      <propertyoption value="center right"/>
+      <propertyoption value="center center"/>
+      <propertyoption value="center top"/>
+    </property>
+  </category>
+  <category name="Block">
+    <property name="word-spacing" type="keyword-length">
+      <propertyoption value="normal"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="letter-spacing" type="keyword-length">
+      <propertyoption value="normal"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="text-align" type="enumerated">
+      <propertyoption value="left"/>
+      <propertyoption value="right"/>
+      <propertyoption value="center"/>
+      <propertyoption value="justify"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="vertical-align" type="keyword-length">
+      <propertyoption value="baseline"/>
+      <propertyoption value="sub"/>
+      <propertyoption value="super"/>
+      <propertyoption value="top"/>
+      <propertyoption value="text-top"/>
+      <propertyoption value="middle"/>
+      <propertyoption value="bottom"/>
+      <propertyoption value="text-bottom"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="text-indent" type="length"></property>
+    <property name="white-space" type="enumerated">
+      <propertyoption value="normal"/>
+      <propertyoption value="pre"/>
+      <propertyoption value="nowrap"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="display" type="enumerated">
+      <propertyoption value="inline"/>
+      <propertyoption value="block"/>
+      <propertyoption value="list-item"/>
+      <propertyoption value="run-in"/>
+      <propertyoption value="inline-block"/>
+      <propertyoption value="compact"/>
+      <propertyoption value="marker"/>
+      <propertyoption value="table"/>
+      <propertyoption value="inline-table"/>
+      <propertyoption value="table-row-group"/>
+      <propertyoption value="table-header-group"/>
+      <propertyoption value="table-footer-group"/>
+      <propertyoption value="table-row"/>
+      <propertyoption value="table-column-group"/>
+      <propertyoption value="table-column"/>
+      <propertyoption value="table-cell"/>
+      <propertyoption value="table-caption"/>
+      <propertyoption value="none"/>
+      <propertyoption value="inherit"/>
+    </property>
+  </category>
+  <category name="Border">
+    <property name="border" type="string"></property>
+    <property name="border-top-color" type="color"></property>
+    <property name="border-right-color" type="color"></property>
+    <property name="border-bottom-color" type="color"></property>
+    <property name="border-left-color" type="color"></property>
+    <property name="border-top-style" type="enumerated">
+      <propertyoption value="none"/>
+      <propertyoption value="solid"/>
+      <propertyoption value="dashed"/>
+      <propertyoption value="dotted"/>
+      <propertyoption value="double"/>
+      <propertyoption value="groove"/>
+      <propertyoption value="ridge"/>
+      <propertyoption value="inset"/>
+      <propertyoption value="outset"/>
+      <propertyoption value="hidden"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="border-right-style" type="enumerated">
+      <propertyoption value="none"/>
+      <propertyoption value="solid"/>
+      <propertyoption value="dashed"/>
+      <propertyoption value="dotted"/>
+      <propertyoption value="double"/>
+      <propertyoption value="groove"/>
+      <propertyoption value="ridge"/>
+      <propertyoption value="inset"/>
+      <propertyoption value="outset"/>
+      <propertyoption value="hidden"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="border-bottom-style" type="enumerated">
+      <propertyoption value="none"/>
+      <propertyoption value="solid"/>
+      <propertyoption value="dashed"/>
+      <propertyoption value="dotted"/>
+      <propertyoption value="double"/>
+      <propertyoption value="groove"/>
+      <propertyoption value="ridge"/>
+      <propertyoption value="inset"/>
+      <propertyoption value="outset"/>
+      <propertyoption value="hidden"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="border-left-style" type="enumerated">
+      <propertyoption value="none"/>
+      <propertyoption value="solid"/>
+      <propertyoption value="dashed"/>
+      <propertyoption value="dotted"/>
+      <propertyoption value="double"/>
+      <propertyoption value="groove"/>
+      <propertyoption value="ridge"/>
+      <propertyoption value="inset"/>
+      <propertyoption value="outset"/>
+      <propertyoption value="hidden"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="border-top-width" type="keyword-length">
+      <propertyoption value="thin"/>
+      <propertyoption value="medium"/>
+      <propertyoption value="thick"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="border-right-width" type="keyword-length">
+      <propertyoption value="thin"/>
+      <propertyoption value="medium"/>
+      <propertyoption value="thick"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="border-bottom-width" type="keyword-length">
+      <propertyoption value="thin"/>
+      <propertyoption value="medium"/>
+      <propertyoption value="thick"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="border-left-width" type="keyword-length">
+      <propertyoption value="thin"/>
+      <propertyoption value="medium"/>
+      <propertyoption value="thick"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="border-top" type="string"></property>
+    <property name="border-right" type="string"></property>
+    <property name="border-bottom" type="string"></property>
+    <property name="border-left" type="string"></property>
+    <property name="border-color" type="color"></property>
+    <property name="border-style" type="string"></property>
+    <property name="border-width" type="string"></property>
+    <property name="outline-color" type="color"></property>
+    <property name="outline-style" type="enumerated" showinmenu="false">
+      <propertyoption value="none"/>
+      <propertyoption value="solid"/>
+      <propertyoption value="dashed"/>
+      <propertyoption value="dotted"/>
+      <propertyoption value="double"/>
+      <propertyoption value="groove"/>
+      <propertyoption value="ridge"/>
+      <propertyoption value="inset"/>
+      <propertyoption value="outset"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="outline-width" type="keyword-length"  showinmenu="false">
+      <propertyoption value="thin"/>
+      <propertyoption value="medium"/>
+      <propertyoption value="thick"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="outline" type="string"  showinmenu="false"></property>
+  </category>
+  <category name="Box">
+    <property name="width" type="keyword-length">
+      <propertyoption value="auto"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="height" type="keyword-length">
+      <propertyoption value="auto"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="float" type="enumerated">
+      <propertyoption value="left"/>
+      <propertyoption value="right"/>
+      <propertyoption value="none"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="clear" type="enumerated">
+      <propertyoption value="left"/>
+      <propertyoption value="right"/>
+      <propertyoption value="both"/>
+      <propertyoption value="none"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="margin" type="string"></property>
+    <property name="margin-top" type="length"></property>
+    <property name="margin-right" type="length"></property>
+    <property name="margin-bottom" type="length"></property>
+    <property name="margin-left" type="length"></property>
+    <property name="padding" type="string"></property>
+    <property name="padding-top" type="length"></property>
+    <property name="padding-right" type="length"></property>
+    <property name="padding-bottom" type="length"></property>
+    <property name="padding-left" type="length"></property>
+    <property name="min-width" type="length"></property>
+    <property name="max-width" type="length"></property>
+    <property name="min-height" type="length"></property>
+    <property name="max-height" type="length"></property>
+  </category>
+  <category name="List">
+    <property name="list-style-type" type="enumerated">
+      <propertyoption value="disc"/>
+      <propertyoption value="circle"/>
+      <propertyoption value="square"/>
+      <propertyoption value="decimal"/>
+      <propertyoption value="lower-roman"/>
+      <propertyoption value="upper-roman"/>
+      <propertyoption value="lower-alpha"/>
+      <propertyoption value="upper-alpha"/>
+      <propertyoption value="none"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="list-style-image" type="relativepath"></property>
+    <property name="list-style-position" type="enumerated">
+      <propertyoption value="inside"/>
+      <propertyoption value="outside"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="list-style" type="string"></property>
+  </category>
+  <category name="Positioning">
+    <property name="position" type="enumerated">
+      <propertyoption value="absolute"/>
+      <propertyoption value="fixed"/>
+      <propertyoption value="relative"/>
+      <propertyoption value="static"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="visibility" type="enumerated">
+      <propertyoption value="visible"/>
+      <propertyoption value="hidden"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <!-- Reuse the prior definitions of width and height. -->
+    <property name="width"></property>
+    <property name="height"></property>
+    <property name="left" type="keyword-length">
+      <propertyoption value="auto"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="top" type="keyword-length">
+      <propertyoption value="auto"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="right" type="keyword-length">
+      <propertyoption value="auto"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="bottom" type="keyword-length">
+      <propertyoption value="auto"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="z-index" type="enumerated">
+      <propertyoption value="auto"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="clip" type="enumerated">
+      <propertyoption value="auto"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="overflow" type="enumerated">
+      <propertyoption value="visible"/>
+      <propertyoption value="hidden"/>
+      <propertyoption value="scroll"/>
+      <propertyoption value="auto"/>
+      <propertyoption value="inherit"/>
+    </property>
+  </category>
+  <category name="Extensions">
+    <property name="page-break-before" type="enumerated">
+      <propertyoption value="auto"/>
+      <propertyoption value="always"/>
+      <propertyoption value="avoid"/>
+      <propertyoption value="left"/>
+      <propertyoption value="right"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="page-break-after" type="enumerated">
+      <propertyoption value="auto"/>
+      <propertyoption value="always"/>
+      <propertyoption value="avoid"/>
+      <propertyoption value="left"/>
+      <propertyoption value="right"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="cursor" type="enumerated">
+      <propertyoption value="crosshair"/>
+      <propertyoption value="text"/>
+      <propertyoption value="wait"/>
+      <propertyoption value="default"/>
+      <propertyoption value="help"/>
+      <propertyoption value="e-resize"/>
+      <propertyoption value="ne-resize"/>
+      <propertyoption value="n-resize"/>
+      <propertyoption value="nw-resize"/>
+      <propertyoption value="w-resize"/>
+      <propertyoption value="sw-resize"/>
+      <propertyoption value="s-resize"/>
+      <propertyoption value="se-resize"/>
+      <propertyoption value="auto"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="filter" type="string"></property>
+    <property name="background-position-x" type="string" showinmenu="false"></property>
+    <property name="background-position-y" type="string" showinmenu="false"></property>
+    <property name="behavior" type="string" showinmenu="false"></property>
+    <property name="ime-mode" type="string" showinmenu="false"></property>
+    <property name="layout-grid" type="string" showinmenu="false"></property>
+    <property name="layout-grid-char" type="string" showinmenu="false"></property>
+    <property name="layout-grid-line" type="string" showinmenu="false"></property>
+    <property name="layout-grid-mode" type="string" showinmenu="false"></property>
+    <property name="layout-grid-type" type="string" showinmenu="false"></property>
+    <property name="line-break" type="string" showinmenu="false"></property>
+    <property name="overflow-x" type="string" showinmenu="false"></property>
+    <property name="overflow-y" type="string" showinmenu="false"></property>
+    <property name="ruby-align" type="string" showinmenu="false"></property>
+    <property name="ruby-overhang" type="string" showinmenu="false"></property>
+    <property name="ruby-position" type="string" showinmenu="false"></property>
+    <property name="scrollbar-3d-light-color" type="string" showinmenu="false"></property>
+    <property name="scrollbar-arrow-color" type="string" showinmenu="false"></property>
+    <property name="scrollbar-base-color" type="string" showinmenu="false"></property>
+    <property name="scrollbar-dark-shadow-color" type="string" showinmenu="false"></property>
+    <property name="scrollbar-face-color" type="string" showinmenu="false"></property>
+    <property name="scrollbar-highlight-color" type="string" showinmenu="false"></property>
+    <property name="scrollbar-shadow-color" type="string" showinmenu="false"></property>
+    <property name="text-autospace" type="string" showinmenu="false"></property>
+    <property name="text-justify" type="string" showinmenu="false"></property>
+    <property name="text-kashida-space" type="string" showinmenu="false"></property>
+    <property name="text-underline-position" type="string" showinmenu="false"></property>
+    <property name="word-break" type="string" showinmenu="false"></property>
+    <property name="word-wrap" type="string" showinmenu="false"></property>
+    <property name="writing-mode" type="string" showinmenu="false"></property>
+    <property name="zoom" type="string" showinmenu="false"></property>
+    <property name="-moz-appearance" type="string" showinmenu="false"></property>
+    <property name="-moz-background-clip" type="string" showinmenu="false"></property>
+    <property name="-moz-background-inline-policy" type="string" showinmenu="false"></property>
+    <property name="-moz-background-origin" type="string" showinmenu="false"></property>
+    <property name="-moz-binding" type="string" showinmenu="false"></property>
+    <property name="-moz-border-bottom-colors" type="string" showinmenu="false"></property>
+    <property name="-moz-border-left-colors" type="string" showinmenu="false"></property>
+    <property name="-moz-border-radius" type="string" showinmenu="false"></property>
+    <property name="-moz-border-radius-bottomleft" type="string" showinmenu="false"></property>
+    <property name="-moz-border-radius-bottomright" type="string" showinmenu="false"></property>
+    <property name="-moz-border-radius-topleft" type="string" showinmenu="false"></property>
+    <property name="-moz-border-radius-topright" type="string" showinmenu="false"></property>
+    <property name="-moz-border-right-colors" type="string" showinmenu="false"></property>
+    <property name="-moz-border-top-colors" type="string" showinmenu="false"></property>
+    <property name="-moz-box-align" type="string" showinmenu="false"></property>
+    <property name="-moz-box-direction" type="string" showinmenu="false"></property>
+    <property name="-moz-box-flex" type="string" showinmenu="false"></property>
+    <property name="-moz-box-ordinal-group" type="string" showinmenu="false"></property>
+    <property name="-moz-box-orient" type="string" showinmenu="false"></property>
+    <property name="-moz-box-pack" type="string" showinmenu="false"></property>
+    <property name="-moz-box-sizing" type="string" showinmenu="false"></property>
+    <property name="-moz-image-region" type="string" showinmenu="false"></property>
+    <property name="-moz-key-equivalent" type="string" showinmenu="false"></property>
+    <property name="-moz-opacity" type="string" showinmenu="false"></property>
+    <property name="-moz-outline" type="string" showinmenu="false"></property>
+    <property name="-moz-outline-color" type="string" showinmenu="false"></property>
+    <property name="-moz-outline-radius" type="string" showinmenu="false"></property>
+    <property name="-moz-outline-radius-bottomleft" type="string" showinmenu="false"></property>
+    <property name="-moz-outline-radius-bottomright" type="string" showinmenu="false"></property>
+    <property name="-moz-outline-radius-topleft" type="string" showinmenu="false"></property>
+    <property name="-moz-outline-radius-topright" type="string" showinmenu="false"></property>
+    <property name="-moz-outline-style" type="string" showinmenu="false"></property>
+    <property name="-moz-outline-width" type="string" showinmenu="false"></property>
+    <property name="-moz-user-focus" type="string" showinmenu="false"></property>
+    <property name="-moz-user-input" type="string" showinmenu="false"></property>
+    <property name="-moz-user-select" type="string" showinmenu="false"></property>
+    <property name="opacity" type="string" showinmenu="false"></property>
+    <property name="color-profile" type="string" showinmenu="false"></property>
+    <property name="rendering-intent" type="string" showinmenu="false"></property>
+  </category>
+  <category name="Table">
+    <property name="border-collapse" type="enumerated" showinmenu="false">
+      <propertyoption value="collapse"/>
+      <propertyoption value="separate"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="border-spacing" type="string" showinmenu="false"></property>
+    <property name="caption-side" type="enumerated" showinmenu="false">
+      <propertyoption value="top"/>
+      <propertyoption value="bottom"/>
+      <propertyoption value="left"/>
+      <propertyoption value="right"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="empty-cells" type="enumerated" showinmenu="false">
+      <propertyoption value="show"/>
+      <propertyoption value="hide"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="table-layout" type="enumerated" showinmenu="false">
+      <propertyoption value="auto"/>
+      <propertyoption value="fixed"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="content" type="string" showinmenu="false"></property>
+    <property name="marker-offset" type="keyword-length" showinmenu="false">
+      <propertyoption value="auto"/>
+      <propertyoption value="inherit"/>
+    </property>
+    <property name="quotes" type="string" showinmenu="false"></property>
+  </category>
+</properties>

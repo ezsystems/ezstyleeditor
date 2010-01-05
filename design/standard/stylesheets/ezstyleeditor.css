@@ -1,0 +1,235 @@
+body
+{
+    background-position: left 26px;
+}
+
+div.content-view-cssstyle
+{
+    float: left;
+    text-align: center;
+}
+
+div.content-view-cssstyle div.class-image div.attribute-title
+{
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+div.content-view-cssstyle div.class-image div.attribute-image
+{
+    padding: 0;
+    margin: 0;
+    width: 160px;
+}
+
+.yui-overlay
+{
+    position: absolute;
+}
+
+.yui-picker-controls, .yui-picker-swatch, .yui-picker-websafe-swatch
+{
+    display: none;
+}
+
+div.yuimenu .bd
+{
+    zoom: normal;
+}
+
+input#ezste-sitestyle-name
+{
+    margin-top:0.25em;
+    float: left;
+}
+
+div#ezste-dialog-newproperty select
+{
+    float: left;
+    margin-top: 0.25em;
+}
+
+div#colorpicker-menu
+{
+
+}
+
+div#colorpicker-menu .bd
+{
+    height: 190px;
+    width: 220px;
+}
+
+.colorpicker-icon
+{
+    cursor: pointer;
+}
+
+.colorpicker-color
+{
+    display: block;
+    display: inline-block;
+    *display: block;    /* For IE */
+    width: 1.25em;
+    height: 1.25em;
+    overflow: hidden;
+    text-indent: 1em;
+    background-color: #fff;
+    white-space: nowrap;
+    border: solid 1px #000;
+    float:left;
+    margin: 0.25em 0.5em 0 0;
+}
+
+.ezste
+{
+    background-image:url(../images/handler.png);
+    background-repeat: no-repeat;
+    background-position: top right;
+    cursor: pointer;
+}
+
+.insert-image-icon
+{
+    cursor: pointer;
+}
+
+input.quarterbox
+{
+    width: 25%;
+}
+
+#ezste-properties-dialog, #ezste-insert-image-dialog
+{
+    background-image: url(../images/ezce-prop-table-bg.png);
+    background-position: bottom left;
+    background-repeat: repeat-x;
+    background-color: #FFFFFF;
+    color: #333;
+}
+
+#ezste-properties-dialog .bd, 
+#ezste-properties-dialog .ft,
+#ezste-insert-image-dialog .bd,
+#ezste-insert-image-dialog .ft
+{
+    background-color: transparent;
+}
+
+table.properties, 
+table.properties input, 
+table.properties select
+{
+    font-size: 93%;
+}
+
+table.properties
+{
+    margin: 0.5em 0 0.5em 0;
+    border-top: 1px solid #DDDDDD;
+    width: 100%;
+}
+
+table.properties th, 
+table.properties td
+{
+    border-right: 1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD;
+    border-top: none;
+    vertical-align: top;
+    padding: 0;
+}
+
+table.properties td
+{
+    font-weight: normal;
+    vertical-align: middle;
+}
+
+table.properties th:first-child, 
+table.properties td:first-child
+{
+    border-left: none;
+}
+
+table.properties td.propname
+{
+    white-space: nowrap;
+    padding: 0.25em;
+}
+
+table.properties td.first, table.properties th.first
+{
+    border-left: 1px solid #DDDDDD;
+}
+
+table.properties img
+{
+    vertical-align: text-bottom;
+}
+
+#ezste-properties-dialog .bd, #ezste-insert-image-dialog .bd, #ezste-group-dialog .bd
+{
+    text-align: left;
+}
+
+em#ezste-menu-label
+{
+    text-indent: -6em;
+    display: block;
+    background: url(../images/ezstyleeditor-logo.gif) center center no-repeat;
+    width: 4em;
+    overflow: hidden;
+}
+
+.yuimenubar li
+{
+    line-height: 2;
+    background-image: none;
+}
+
+.loading-content
+{
+    background-image: url(../images/loading.gif);
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 16px;
+}
+
+#ezste-insert-image-dialog-content .image-container
+{
+    float: left;
+    width: 23%;
+    text-align: center;
+    margin-bottom: 0.5em;
+    margin-right: 0.5em;
+    border: 1px solid #DDDDDD;
+    background-image: url(../images/ezce-img-bg.png);
+    background-position: left top;
+    background-repeat: repeat-x;
+    background-color: #FFFFFF;
+    padding: 0.25em 0 0.25em 0;
+}
+
+#ezste-insert-image-dialog-content .image-container .name
+{
+    padding: 0.25em 0 0.5em 0;
+}
+
+#ezste-sitestyle-dialog .bd
+{
+    text-align: left;
+}
+
+div#ezste-menubar
+{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+li.help-url
+{
+    float: right;
+    margin: 0;
+    /* Fix for IE7: IE7 using unnecessary horizontal scrollbar */
+    *overflow: auto;
+}
