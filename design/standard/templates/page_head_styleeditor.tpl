@@ -4,6 +4,8 @@
 
 {def $site_style = fetch('styleeditor', 'current_style')}
 
-<style type="text/css" title="ezste-main-css">
+<style id="ezste-main-css" type="text/css">
+
 {$site_style.style.css}
+
 </style>

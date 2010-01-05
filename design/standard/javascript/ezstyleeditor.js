@@ -1653,7 +1653,7 @@ YAHOO.ez.StyleEditor = function() {
 
     var getStyleTag = function() {
         var oStyle = yud.getElementsBy(function(e){
-            if (e.title == "ezste") {
+            if (e.id == "ezste") {
                 return true;
             }
         }, "style")[0];
@@ -1661,7 +1661,7 @@ YAHOO.ez.StyleEditor = function() {
         if (!oStyle) {
             oStyle = document.createElement("style");
             oStyle.type = "text/css";
-            oStyle.title = "ezste";
+            oStyle.id = "ezste";
         
             var oHead = yud.getElementsBy(function(e){
                 return true
@@ -1674,7 +1674,7 @@ YAHOO.ez.StyleEditor = function() {
     
     var getMainStyleTag = function() {
         var oStyle = yud.getElementsBy(function(e){
-            if (e.title == "ezste-main-css") {
+            if (e.id == "ezste-main-css") {
                 return true;
             }
         }, "style")[0];
