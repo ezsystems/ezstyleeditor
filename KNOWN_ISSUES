@@ -13,9 +13,8 @@ extension/ezjscore/settings/ezjscore.ini:
 [eZJSCore]
 ExternalScripts[yui2]=http://yui.yahooapis.com/2.8.0r4/build/yuiloader/yuiloader-min.js
 
-
-
 * Issue #015959  StyleEditor: Cancel button in property dialog box doesn't
 work as excected
 * Issue #015960  StyleEditor: Property dialog box for "Factbox" doesn't look
 right
+* Issue #016001 StyleEditor: Drop-downs for width property (among others) doesn't work ideally
