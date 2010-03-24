@@ -7,7 +7,7 @@ CREATE SEQUENCE ezcssesitestyle_s
 
 CREATE TABLE ezcssesitestyle (
   id integer DEFAULT nextval('ezcssesitestyle_s'::text) NOT NULL,
-  name character varying(255) NOT NULL,
+  name character varying(255) NOT NULL DEFAULT 'name',
   current_version integer DEFAULT 0 NOT NULL,
   selected smallint NOT NULL
 );
