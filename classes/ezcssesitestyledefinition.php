@@ -33,7 +33,7 @@ class ezcsseSiteStyleDefinition extends eZPersistentObject
                                                                   'multiplicity' => '1..*' ),
                                          'style' => array( 'name' => 'Style',
                                                            'datatype' => 'string',
-                                                           'default' => '',
+                                                           'default' => '<?xml version="1.0"?><style />',
                                                            'required' => false ),
                                          'version' => array( 'name' => 'Version',
                                                              'datatype' => 'integer',
