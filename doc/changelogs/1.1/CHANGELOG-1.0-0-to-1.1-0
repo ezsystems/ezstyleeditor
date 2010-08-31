@@ -3,3 +3,4 @@ Changes from 1.0-0 to 1.1-0
 *Bugs*
 
 - Fixed bug #16450: TC-86: Cascate Style (CSS) button on EzStyle Editor doesn't work (gives an error when pressed)
+- Fixed bug #17140: TC-86 - The color picker in Style Editor is broken

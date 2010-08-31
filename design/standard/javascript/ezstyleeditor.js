@@ -366,10 +366,12 @@ YAHOO.ez.StyleEditor = function() {
                 oDiv.appendChild(oImg);
                 
                 oTdPropValue.appendChild( oDiv );
-                
-                YAHOO.ez.colorPicker.cfg = { pickerthumb: oCfg.pickerthumb, 
-   					 						 huethumb: oCfg.huethumb };
-                YAHOO.ez.colorPicker.init();
+
+                yue.onContentReady( "ezste-properties-dialog", function(e) {
+                    YAHOO.ez.colorPicker.cfg = { pickerthumb: oCfg.pickerthumb,
+                                                 huethumb: oCfg.huethumb };
+                    YAHOO.ez.colorPicker.init();
+                } );
                 break;
             case 'font':
                 var oSelect = document.createElement("select");
