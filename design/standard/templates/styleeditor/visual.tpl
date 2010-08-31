@@ -193,16 +193,6 @@
               overlay: false
           },
           {
-              selector: "",
-              alias: "Header 6",
-              element: {
-                  name: "h5",
-                  id: "",
-                  classname: ""
-              },
-              overlay: false
-          },
-          {
               group: "headergroup",
               groupname: "Header",
               alias: "User menu",
