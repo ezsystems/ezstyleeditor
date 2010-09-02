@@ -12,6 +12,7 @@ YAHOO.ez.StyleEditor = function() {
         oGroupDialog = {},
         oManager = {},
         oCfg = {},
+        oCachedProperties = [],
         nPropertyCount = 0,
         oWorkingElement = {},
         aLength = [];
@@ -656,7 +657,7 @@ YAHOO.ez.StyleEditor = function() {
                     try {
                     
                         oProperties = YAHOO.lang.JSON.parse(o.responseText);
-                
+                        oCachedProperties.push( oProperties );                
                     }
                     catch (x) {
 
@@ -1425,7 +1426,8 @@ YAHOO.ez.StyleEditor = function() {
 
     var showGroupDialogBox = function(e, element) {
         oPropDialog.hide();
-        
+        oCachedProperties = [];
+
         var oElement = element;
         var oForm = document.createElement("form");
         oForm.method = "post";
@@ -1601,6 +1603,7 @@ YAHOO.ez.StyleEditor = function() {
 
     var showPropertyDialogBox = function(e, element) {
         oGroupDialog.hide();
+        oCachedProperties = [];
         
         var oElement = element;
         oWorkingElement = element;
@@ -1650,6 +1653,7 @@ YAHOO.ez.StyleEditor = function() {
     };
 
     var propDialogCancel = function() {
+        cleanupOnCancel();
         this.cancel();
     };
 
@@ -1965,8 +1969,67 @@ YAHOO.ez.StyleEditor = function() {
     };
 
     var groupDialogCancel = function() {
+        cleanupOnCancel();
         this.cancel();
     };
+
+    var cleanupOnCancel = function() {
+        var sElementID = oWorkingElement.element.id;
+        var sSelector = oWorkingElement.selector;
+
+        if ( sElementID == "" ) {
+            var oStyle = getStyleTag();
+
+            var sCSSCode = "";
+
+            if ( sSelector != "" ) {
+                sCSSCode = sSelector + " {\n";
+            } else {
+                sCSSCode = oWorkingElement.element.name + " {\n";
+            }
+        }
+
+        if( sElementID != "" ) {
+            var oSrcElement = yud.get( sElementID );
+            oSrcElement.setAttribute( "style", " " );
+        }
+
+        for( var i = 0; i < oCachedProperties.length; i++ ) {
+            var oProperties = oCachedProperties[i];
+
+            for( var j = 0; j < oProperties.properties.length; j++ ) {
+                var oProperty = oProperties.properties[j];
+
+                // Set default value for "background-color to transparent"
+                if( oProperty.type == "color" 
+                        && oProperty.value == ""
+                            && oProperty.name == "background-color" ) {
+                    oProperty.value = "transparent";
+                }
+
+                if( !oSrcElement ) {
+                    if( sElementID == "" ) {
+                        sCSSCode += oProperty.name + ": " + oProperty.value + ";\n";
+                    }
+                }
+
+                yud.setStyle( oSrcElement, oProperty.name, oProperty.value );
+            }
+        }
+
+        if ( sElementID == "" ) {
+            sCSSCode += "}";
+
+            // IE workaround
+            if(oStyle.styleSheet) {
+                oStyle.styleSheet.cssText = sCSSCode
+            } else {
+                oStyle.appendChild(document.createTextNode(sCSSCode));
+            }
+        }
+
+        oCachedProperties = [];
+    }
 
     /*
         public section
