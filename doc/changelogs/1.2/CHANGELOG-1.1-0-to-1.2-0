@@ -1,0 +1,9 @@
+Changes from 1.1-0 to 1.2-0
+
+*Bugs*
+
+- Fixed bug #16450: TC-86: Cascate Style (CSS) button on EzStyle Editor doesn't work (gives an error when pressed)
+- Fixed bug #17140: TC-86 - The color picker in Style Editor is broken
+- Fixed bug #17179: ezstyleeditor: missing AliasSetting section name in image.ini file
+- Fixed bug #016434: Style Editor, the "Elements">"h5" and "h6" have the same properties.
+- Fixed bug #017141: TC-93 - Style Editor - The "Cancel" button does not work when we change a table properties in Style Editor,
