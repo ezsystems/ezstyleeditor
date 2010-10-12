@@ -193,16 +193,6 @@
               overlay: false
           },
           {
-              selector: "",
-              alias: "Header 6",
-              element: {
-                  name: "h5",
-                  id: "",
-                  classname: ""
-              },
-              overlay: false
-          },
-          {
               group: "headergroup",
               groupname: "Header",
               alias: "User menu",
@@ -1237,7 +1227,7 @@
   });
 
   YUILoader.ignore = ["reset","fonts"];
-  YUILoader.require(["button","colorpicker","container","json","menu","grids","slider","treeview","utilities","styleeditor","styleeditorcolorpicker","styleeditorstylesheet"]);
+  YUILoader.require(["button","colorpicker","container","grids","json","menu","slider","treeview","utilities","styleeditor","styleeditorcolorpicker","styleeditorstylesheet"]);
   YUILoader.insert();
 })();
 {/literal}

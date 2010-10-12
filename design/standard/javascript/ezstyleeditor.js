@@ -12,6 +12,7 @@ YAHOO.ez.StyleEditor = function() {
         oGroupDialog = {},
         oManager = {},
         oCfg = {},
+        oCachedProperties = [],
         nPropertyCount = 0,
         oWorkingElement = {},
         aLength = [];
@@ -366,10 +367,12 @@ YAHOO.ez.StyleEditor = function() {
                 oDiv.appendChild(oImg);
                 
                 oTdPropValue.appendChild( oDiv );
-                
-                YAHOO.ez.colorPicker.cfg = { pickerthumb: oCfg.pickerthumb, 
-   					 						 huethumb: oCfg.huethumb };
-                YAHOO.ez.colorPicker.init();
+
+                yue.onContentReady( "ezste-properties-dialog", function(e) {
+                    YAHOO.ez.colorPicker.cfg = { pickerthumb: oCfg.pickerthumb,
+                                                 huethumb: oCfg.huethumb };
+                    YAHOO.ez.colorPicker.init();
+                } );
                 break;
             case 'font':
                 var oSelect = document.createElement("select");
@@ -405,27 +408,27 @@ YAHOO.ez.StyleEditor = function() {
                 yud.addClass( oInput, "quarterbox" );
                 
                 yue.addListener( oInput, "keyup", function(e) {
-                	var isNumeric = !/[a-zA-z]/.test(this.value);
+                    var isNumeric = !/[a-zA-z]/.test(this.value);
 
-            		var oKeywordSelect = yud.getElementsByClassName( "ezste-keyword-select", "select", this.parentNode )[0];
-                	var oLengthSelect = yud.getElementsByClassName( "ezste-length-select", "select", this.parentNode )[0];
-                	
-                	if ( isNumeric == false ) {
-                		oLengthSelect.disabled = 1;
-                		oKeywordSelect.disabled = 0;
-                	} else {
-                		oLengthSelect.disabled = 0;
-                		oKeywordSelect.disabled = 1;
-                	}
-                	
-                	if ( this.value == "" ) {
-                		var isNumeric = !/[a-zA-z]/.test( oKeywordSelect.options[oKeywordSelect.selectedIndex].value );
+                    var oKeywordSelect = yud.getElementsByClassName( "ezste-keyword-select", "select", this.parentNode )[0];
+                    var oLengthSelect = yud.getElementsByClassName( "ezste-length-select", "select", this.parentNode )[0];
+                    
+                    if ( isNumeric == false ) {
+                        oLengthSelect.disabled = 1;
+                        oKeywordSelect.disabled = 0;
+                    } else {
+                        oLengthSelect.disabled = 0;
+                        oKeywordSelect.disabled = 1;
+                    }
+                    
+                    if ( this.value == "" ) {
+                        var isNumeric = !/[a-zA-z]/.test( oKeywordSelect.options[oKeywordSelect.selectedIndex].value );
 
                         if ( isNumeric ) {
                             oLengthSelect.disabled = 0;
                             oKeywordSelect.disabled = 0;
                         }
-                	}
+                    }
                 } );
 
                 var oKeywordSelect = document.createElement("select");
@@ -450,23 +453,23 @@ YAHOO.ez.StyleEditor = function() {
                 }
 
                 if ( oProperty.value != "" ) {
-                	oKeywordSelect.disabled = 1;	
+                    oKeywordSelect.disabled = 1;    
                 }
                 
                 yud.addClass( oKeywordSelect, "ezste-keyword-select" );
                 
                 yue.addListener( oKeywordSelect, "change", function(e) {
-                	var oLengthSelect = yud.getElementsByClassName( "ezste-length-select", "select", this.parentNode )[0];
-                	var oInput = yud.getElementBy(function(e) { return true;}, "input", this.parentNode);
-                	oInput.value = "";
-                	
-                	var isNumeric = YAHOO.lang.isNumber( parseInt( this.options[this.selectedIndex].value ) );
-                	
-                	if ( isNumeric == false ) {
-                		oLengthSelect.disabled = 1;
-                	} else {
-                		oLengthSelect.disabled = 0;
-                	}
+                    var oLengthSelect = yud.getElementsByClassName( "ezste-length-select", "select", this.parentNode )[0];
+                    var oInput = yud.getElementBy(function(e) { return true;}, "input", this.parentNode);
+                    oInput.value = "";
+                    
+                    var isNumeric = YAHOO.lang.isNumber( parseInt( this.options[this.selectedIndex].value ) );
+                    
+                    if ( isNumeric == false ) {
+                        oLengthSelect.disabled = 1;
+                    } else {
+                        oLengthSelect.disabled = 0;
+                    }
                 } );
 
                 var oLengthSelect = document.createElement("select");
@@ -493,9 +496,9 @@ YAHOO.ez.StyleEditor = function() {
                 var isNumeric = !/[a-zA-z]/.test( oKeywordSelect.options[oKeywordSelect.selectedIndex].value );
 
                 if ( isNumeric == false ) {
-                    oLengthSelect.disabled = 1;	
+                    oLengthSelect.disabled = 1; 
                 } else if( /[a-zA-z]/.test( oProperty.value ) ) {
-                	oLengthSelect.disabled = 1;
+                    oLengthSelect.disabled = 1;
                 }
                 
                 yud.addClass( oLengthSelect, "ezste-length-select" );
@@ -654,7 +657,7 @@ YAHOO.ez.StyleEditor = function() {
                     try {
                     
                         oProperties = YAHOO.lang.JSON.parse(o.responseText);
-                
+                        oCachedProperties.push( oProperties );                
                     }
                     catch (x) {
 
@@ -682,8 +685,8 @@ YAHOO.ez.StyleEditor = function() {
                     
                     for( var i = 0; i < nPropertyCount; i++ )
                     {
-                    	var oProperty = oProperties.properties[i];
-                    	var oTr = addNewProperty( oProperty, i );
+                        var oProperty = oProperties.properties[i];
+                        var oTr = addNewProperty( oProperty, i );
                         oTBody.appendChild( oTr );
                         
                     }
@@ -864,39 +867,39 @@ YAHOO.ez.StyleEditor = function() {
         
         var oCallbacks = {
             success: function (o) {
-            	var oProperty = {};
+                var oProperty = {};
 
-            	try {
-            		
+                try {
+                    
                 oProperty = YAHOO.lang.JSON.parse(o.responseText);
         
-            	}
-            	catch (x) {
+                }
+                catch (x) {
 
-            		return;
+                    return;
         
-            	}
-            	
-        		var oTable = yud.getElementBy( function(el) {
-        			return true;
-        		}, "table", oPropertiesDiv );
+                }
+                
+                var oTable = yud.getElementBy( function(el) {
+                    return true;
+                }, "table", oPropertiesDiv );
 
-        		var oTBody = yud.getElementBy( function(el) {
-            		return true;
-            	}, "tbody", oTable );
-        		
-        		var oEmptyTr = yud.getElementsByClassName( "ezste-no-properties", "tr", oPropertiesDiv );
+                var oTBody = yud.getElementBy( function(el) {
+                    return true;
+                }, "tbody", oTable );
+                
+                var oEmptyTr = yud.getElementsByClassName( "ezste-no-properties", "tr", oPropertiesDiv );
 
-        		if( oEmptyTr != "" ) {
-        			oTBody.removeChild( oEmptyTr[0] );
-        		}
-        		
-        		var i = yud.getChildren(oTBody).length;
-        		var oTr = addNewProperty( oProperty, i );
-        		oTBody.appendChild( oTr );
+                if( oEmptyTr != "" ) {
+                    oTBody.removeChild( oEmptyTr[0] );
+                }
+                
+                var i = yud.getChildren(oTBody).length;
+                var oTr = addNewProperty( oProperty, i );
+                oTBody.appendChild( oTr );
 
-        		nPropertyCount = yud.getChildren(oTBody).length;
-        		
+                nPropertyCount = yud.getChildren(oTBody).length;
+                
                 oPropDialog.sizeUnderlay();
                 oGroupDialog.sizeUnderlay();
             },
@@ -1204,24 +1207,24 @@ YAHOO.ez.StyleEditor = function() {
             var oCallbacks = {
                 success: function (o) {
                     var oTable = yud.getElementBy( function(e) {
-                    	return true;
+                        return true;
                     }, "table", oPropertiesDiv );
                     
                     var aInputs = yud.getElementsBy( function(e) {
-                    	if ( e.type == "checkbox" && e.checked == true ) {
-                    		return true;
-                    	}
+                        if ( e.type == "checkbox" && e.checked == true ) {
+                            return true;
+                        }
                     }, "input", oTable );
                     
                     var oTBody = yud.getElementBy( function(e) {
-                    	return true;
+                        return true;
                     }, "tbody", oTable );
                     
                     for( var i = 0; i < aInputs.length; i++ ) {
-                    	var oInput = aInputs[i];
-                    	var oTr = yud.getAncestorByTagName( oInput, "tr" );
-                    	
-                    	oTBody.removeChild( oTr );
+                        var oInput = aInputs[i];
+                        var oTr = yud.getAncestorByTagName( oInput, "tr" );
+                        
+                        oTBody.removeChild( oTr );
                     }
                     
                     nPropertyCount = yud.getChildren(oTBody).length;
@@ -1317,12 +1320,12 @@ YAHOO.ez.StyleEditor = function() {
         var sServerCall = "ezcsse::storesitestyle";
 
         var oStyle = getMainStyleTag();
-		
+        
         if(oStyle.styleSheet){
-			oStyle.styleSheet.cssText = "";
-		} else {
-			oStyle.innerHTML = "";
-		}
+            oStyle.styleSheet.cssText = "";
+        } else {
+            oStyle.innerHTML = "";
+        }
         
         var oTmpStyle = getStyleTag();
         
@@ -1330,44 +1333,44 @@ YAHOO.ez.StyleEditor = function() {
 
         var oCallbacks = {
             success: function (o) {
-        		var oSiteStyle = {};
+                var oSiteStyle = {};
             
-        		try {
-        			oSiteStyle = YAHOO.lang.JSON.parse(o.responseText);
-        		}
-        		catch (x) {
-        			return;
-        		}
-        	
-        		for( var i = 0; i < oSiteStyle.rules.length; i++  ) {
-        			var oRule = oSiteStyle.rules[i];
-        		
-        			var sSelector = oRule.selector;
-        		
-        			sCSSCode += sSelector + " {\n";
+                try {
+                    oSiteStyle = YAHOO.lang.JSON.parse(o.responseText);
+                }
+                catch (x) {
+                    return;
+                }
+            
+                for( var i = 0; i < oSiteStyle.rules.length; i++  ) {
+                    var oRule = oSiteStyle.rules[i];
                 
-        			for( var j = 0; j < oRule.properties.length; j++ ) {
-        				var oProperty = oRule.properties[j];
-                	
-        				sCSSCode += oProperty.name + ": " + oProperty.value + ";\n";
-                	
-        			}
+                    var sSelector = oRule.selector;
+                
+                    sCSSCode += sSelector + " {\n";
+                
+                    for( var j = 0; j < oRule.properties.length; j++ ) {
+                        var oProperty = oRule.properties[j];
+                    
+                        sCSSCode += oProperty.name + ": " + oProperty.value + ";\n";
+                    
+                    }
 
-        			sCSSCode += "}\n";
-        		}
-        	
-        		// IE workaround
-        		if(oStyle.styleSheet){
-        			oStyle.styleSheet.cssText = sCSSCode
-        		} else {
-        			oStyle.appendChild(document.createTextNode(sCSSCode));
-        		}
-        		
+                    sCSSCode += "}\n";
+                }
+            
+                // IE workaround
+                if(oStyle.styleSheet){
+                    oStyle.styleSheet.cssText = sCSSCode
+                } else {
+                    oStyle.appendChild(document.createTextNode(sCSSCode));
+                }
+                
                 if(oTmpStyle.styleSheet){
-                	oTmpStyle.styleSheet.cssText = "";
-        		} else {
-        			oTmpStyle.innerHTML = "";
-        		}
+                    oTmpStyle.styleSheet.cssText = "";
+                } else {
+                    oTmpStyle.innerHTML = "";
+                }
             },
 
             failure: function (o) {
@@ -1423,7 +1426,8 @@ YAHOO.ez.StyleEditor = function() {
 
     var showGroupDialogBox = function(e, element) {
         oPropDialog.hide();
-        
+        oCachedProperties = [];
+
         var oElement = element;
         var oForm = document.createElement("form");
         oForm.method = "post";
@@ -1539,7 +1543,7 @@ YAHOO.ez.StyleEditor = function() {
         
         
         var oCreateButtonInput = new YAHOO.widget.Button( { label:oCfg.BUTTON_LABELS[8],
-            												container:oBlockDiv } );
+                                                            container:oBlockDiv } );
         oCreateButtonInput.on( "click", createSiteStyle );
         
         var oObjectIDInput = document.createElement("input");
@@ -1549,7 +1553,7 @@ YAHOO.ez.StyleEditor = function() {
         
         var oBlockDivClone = oBlockDiv.cloneNode(true);
         var oRestoreButtonInput = new YAHOO.widget.Button( { label:oCfg.BUTTON_LABELS[9],
-															 container:oBlockDivClone } );
+                                                             container:oBlockDivClone } );
         oRestoreButtonInput.on( "click", showRestoreStyleDialogBox );
         
         oBlockDiv.appendChild( oSiteStyleNameInput );
@@ -1599,6 +1603,7 @@ YAHOO.ez.StyleEditor = function() {
 
     var showPropertyDialogBox = function(e, element) {
         oGroupDialog.hide();
+        oCachedProperties = [];
         
         var oElement = element;
         oWorkingElement = element;
@@ -1648,6 +1653,7 @@ YAHOO.ez.StyleEditor = function() {
     };
 
     var propDialogCancel = function() {
+        cleanupOnCancel();
         this.cancel();
     };
 
@@ -1691,10 +1697,10 @@ YAHOO.ez.StyleEditor = function() {
         var oStyle = getMainStyleTag();
         
         if(oStyle.styleSheet){
-			oStyle.styleSheet.cssText = "";
-		} else {
-			oStyle.innerHTML = "";
-		}
+            oStyle.styleSheet.cssText = "";
+        } else {
+            oStyle.innerHTML = "";
+        }
 
         var oTmpStyle = getStyleTag();
         
@@ -1702,32 +1708,32 @@ YAHOO.ez.StyleEditor = function() {
         
         var oCallbacks = {
             success: function (o) {
-            	var oSiteStyle = {};
+                var oSiteStyle = {};
             
-            	try {
-            		oSiteStyle = YAHOO.lang.JSON.parse(o.responseText);
-            	}
-            	catch (x) {
-            		return;
-            	}
-            	
-            	for( var i = 0; i < oSiteStyle.rules.length; i++  ) {
-            		var oRule = oSiteStyle.rules[i];
-            		
-            		var sSelector = oRule.selector;
-            		
+                try {
+                    oSiteStyle = YAHOO.lang.JSON.parse(o.responseText);
+                }
+                catch (x) {
+                    return;
+                }
+                
+                for( var i = 0; i < oSiteStyle.rules.length; i++  ) {
+                    var oRule = oSiteStyle.rules[i];
+                    
+                    var sSelector = oRule.selector;
+                    
                     sCSSCode += sSelector + " {\n";
                     
                     for( var j = 0; j < oRule.properties.length; j++ ) {
-                    	var oProperty = oRule.properties[j];
-                    	
-                    	sCSSCode += oProperty.name + ": " + oProperty.value + ";\n";
-                    	
+                        var oProperty = oRule.properties[j];
+                        
+                        sCSSCode += oProperty.name + ": " + oProperty.value + ";\n";
+                        
                     }
     
                     sCSSCode += "}\n";
-            	}
-            	
+                }
+                
                 // IE workaround
                 if(oStyle.styleSheet){
                     oStyle.styleSheet.cssText = sCSSCode
@@ -1736,10 +1742,10 @@ YAHOO.ez.StyleEditor = function() {
                 }
                 
                 if(oTmpStyle.styleSheet){
-                	oTmpStyle.styleSheet.cssText = "";
-        		} else {
-        			oTmpStyle.innerHTML = "";
-        		}
+                    oTmpStyle.styleSheet.cssText = "";
+                } else {
+                    oTmpStyle.innerHTML = "";
+                }
             },
 
             failure: function (o) {
@@ -1776,7 +1782,7 @@ YAHOO.ez.StyleEditor = function() {
         var sSelector = oWorkingElement.selector;
 
         if ( sElementID == "" ) {
-        	var oStyle = getStyleTag();
+            var oStyle = getStyleTag();
             
             var sCSSCode = "";
             
@@ -1812,19 +1818,19 @@ YAHOO.ez.StyleEditor = function() {
                 }
                 
                 if( oName == "Params[properties][" + i + "][keyword]" ) {
-                	if ( oElement.nodeName.toLowerCase() == "select" && oElement.disabled == false ) {
-                		oProperty.keyword = oElement.options[oElement.selectedIndex].value;
-                	} else if ( oElement.nodeName.toLowerCase() == "input" ) {
-                		oProperty.keyword = oElement.value;
-                	} else {
-                		oProperty.keyword = oProperty.value;
-                	}
+                    if ( oElement.nodeName.toLowerCase() == "select" && oElement.disabled == false ) {
+                        oProperty.keyword = oElement.options[oElement.selectedIndex].value;
+                    } else if ( oElement.nodeName.toLowerCase() == "input" ) {
+                        oProperty.keyword = oElement.value;
+                    } else {
+                        oProperty.keyword = oProperty.value;
+                    }
                 }
                 
                 if( oName == "Params[properties][" + i + "][length]" ) {
-                	if ( oElement.disabled == 0 ) {
-                		oProperty.length = oElement.options[oElement.selectedIndex].value;
-                	}
+                    if ( oElement.disabled == 0 ) {
+                        oProperty.length = oElement.options[oElement.selectedIndex].value;
+                    }
                 }
                 
                 if( oName == "Params[properties][" + i + "][name]" ) {
@@ -1840,11 +1846,11 @@ YAHOO.ez.StyleEditor = function() {
                     && oProperty.length != "" ) {
                 oProperty.value = oProperty.keyword + oProperty.length;
             } else if ( oProperty.value != "" 
-            			    && oProperty.length != "" ) {
-            	oProperty.value = oProperty.value + oProperty.length;
+                            && oProperty.length != "" ) {
+                oProperty.value = oProperty.value + oProperty.length;
             } else if ( oProperty.keyword != ""
-            	        	&& oProperty.value == "") {
-            	oProperty.value = oProperty.keyword;
+                            && oProperty.value == "") {
+                oProperty.value = oProperty.keyword;
             }
             
             // Set default value for "background-color to transparent"
@@ -1878,14 +1884,14 @@ YAHOO.ez.StyleEditor = function() {
     }
 
     var storeProperties = function( formId ) {
-    	var oForm = yud.get(formId);
+        var oForm = yud.get(formId);
         yuc.setForm(oForm);
         
         var sElementID = oWorkingElement.element.id;
         var sSelector = oWorkingElement.selector;
         
         if ( sElementID == "" ) {
-        	var oStyle = getStyleTag();
+            var oStyle = getStyleTag();
             
             var sCSSCode = "";
             
@@ -1963,8 +1969,67 @@ YAHOO.ez.StyleEditor = function() {
     };
 
     var groupDialogCancel = function() {
+        cleanupOnCancel();
         this.cancel();
     };
+
+    var cleanupOnCancel = function() {
+        var sElementID = oWorkingElement.element.id;
+        var sSelector = oWorkingElement.selector;
+
+        if ( sElementID == "" ) {
+            var oStyle = getStyleTag();
+
+            var sCSSCode = "";
+
+            if ( sSelector != "" ) {
+                sCSSCode = sSelector + " {\n";
+            } else {
+                sCSSCode = oWorkingElement.element.name + " {\n";
+            }
+        }
+
+        if( sElementID != "" ) {
+            var oSrcElement = yud.get( sElementID );
+            oSrcElement.setAttribute( "style", " " );
+        }
+
+        for( var i = 0; i < oCachedProperties.length; i++ ) {
+            var oProperties = oCachedProperties[i];
+
+            for( var j = 0; j < oProperties.properties.length; j++ ) {
+                var oProperty = oProperties.properties[j];
+
+                // Set default value for "background-color to transparent"
+                if( oProperty.type == "color" 
+                        && oProperty.value == ""
+                            && oProperty.name == "background-color" ) {
+                    oProperty.value = "transparent";
+                }
+
+                if( !oSrcElement ) {
+                    if( sElementID == "" ) {
+                        sCSSCode += oProperty.name + ": " + oProperty.value + ";\n";
+                    }
+                }
+
+                yud.setStyle( oSrcElement, oProperty.name, oProperty.value );
+            }
+        }
+
+        if ( sElementID == "" ) {
+            sCSSCode += "}";
+
+            // IE workaround
+            if(oStyle.styleSheet) {
+                oStyle.styleSheet.cssText = sCSSCode
+            } else {
+                oStyle.appendChild(document.createTextNode(sCSSCode));
+            }
+        }
+
+        oCachedProperties = [];
+    }
 
     /*
         public section
@@ -1973,9 +2038,9 @@ YAHOO.ez.StyleEditor = function() {
     return {
     
         init: function() {
-        	yud.addClass( document.getElementsByTagName( "body" )[0], "yui-skin-sam" );
+            yud.addClass( document.getElementsByTagName( "body" )[0], "yui-skin-sam" );
             
-        	oCfg = this.cfg;
+            oCfg = this.cfg;
             yue.onDOMReady( this.setupMenu, this, true );
             yue.onDOMReady( this.setupDialogs, this, true );
             yue.onContentReady( "ezste-menubar", this.setupOverlay, this,  true );

@@ -1,5 +1,6 @@
 <?php /* 
 
+[AliasSettings]
 AliasList[]=styleeditor
 
 [styleeditor]
