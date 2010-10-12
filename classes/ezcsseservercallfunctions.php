@@ -334,14 +334,11 @@ class ezcsseServerCallFunctions
             $node = eZContentObjectTreeNode::fetch( $nodeID );
         }
 
-        if ( !$node instanceof eZContentObjectTreeNode )
-        {
-            echo json_encode( array( 'error' => ezpI18n::tr( 'extension/ezstyleeditor', 'Image repository for given path / node ID does not exist. Please check ezstyleeditor.ini INI file configuration.' ) ) );
-            return;
-        }
+        if ( $node instanceof eZContentObjectTreeNode )
+            $parentNodeID = $node->attribute('node_id');
 
         $images = eZContentObjectTreeNode::subTreeByNodeID( array( 'ClassFilterType' => 'include',
-                                                                   'ClassFilterArray' => array( 'image' ) ), $node->attribute('node_id') );
+                                                                   'ClassFilterArray' => array( 'image' ) ), $parentNodeID );
 
         $imageList = array();
             
