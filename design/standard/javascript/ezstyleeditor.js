@@ -49,6 +49,17 @@ YAHOO.ez.StyleEditor = function() {
         return oDiv;
     }
 
+    var getErrorMsgNode = function( msg ) {
+        var oP = document.createElement("p");
+        var oMsgDiv = document.createElement("div");
+        yud.addClass(oMsgDiv, "block");
+
+        oP.appendChild(document.createTextNode(msg));
+        oMsgDiv.appendChild(oP);
+
+        return oMsgDiv;
+    }
+
     var onSubmenuShow = function() {
 
         if( this.id == "ezste-menu-label" ) {
@@ -947,7 +958,7 @@ YAHOO.ez.StyleEditor = function() {
         var oBlockDiv = oCImageFileInput.parentNode;
         oBlockDiv.replaceChild(oImageFileInput, oCImageFileInput);
     };
-    
+
     var getImageList = function( target ) {
     
         var oInsertImgContentDiv = target;
@@ -967,14 +978,11 @@ YAHOO.ez.StyleEditor = function() {
 
                 if(aImages.length == 0)
                 {
-                    var sMsg = oCfg.DIALOG_LABELS[3];
-                    var oP = document.createElement("p");
-                    var oMsgDiv = document.createElement("div");
-                    yud.addClass(oMsgDiv, "block");
-                    
-                    oP.appendChild(document.createTextNode(sMsg));
-                    oMsgDiv.appendChild(oP);
-                    oInsertImgContentDiv.appendChild(oMsgDiv);
+                    oInsertImgContentDiv.appendChild( getErrorMsgNode( oCfg.DIALOG_LABELS[3] ) );
+                    return;
+                } else if (aImages.error)
+                {
+                    oInsertImgContentDiv.appendChild( getErrorMsgNode( aImages.error ) );
                     return;
                 }
 
