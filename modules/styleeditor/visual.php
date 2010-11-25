@@ -93,7 +93,7 @@ $languageCode = $locale->httpLocaleCode();
 
 $title = $ini->variable( 'SiteSettings', 'SiteName' );
 
-$uri = eZURI::instance( eZSys::requestURI() );
+$uri = eZURI::instance();
 $GLOBALS['eZRequestedURI'] = $uri;
 
 $site = array( 'title' => $title,
@@ -106,17 +106,12 @@ $currentUser = eZUser::currentUser();
 $tpl->setVariable( 'current_user', $currentUser );
 $tpl->setVariable( 'ui_context', '' );
 
-$access = accessType( $uri,
-                      eZSys::hostname(),
-                      eZSys::serverPort(),
-                      eZSys::indexFile() );
-
 $lastAccessURI = '/';
 if ( $http->hasSessionVariable( 'LastAccessesURI' ) )
     $lastAccessURI = $http->sessionVariable( 'LastAccessesURI' );
 
 $tpl->setVariable( 'last_access_uri', $lastAccessURI ); 
-$tpl->setVariable( 'access_type', $access );
+$tpl->setVariable( 'access_type', eZSiteAccess::current() );
 $tpl->setVariable( 'uri_string', $uri->uriString() );
 
 $tpl->setVariable( 'site', $site );
