@@ -233,3 +233,7 @@ li.help-url
     /* Fix for IE7: IE7 using unnecessary horizontal scrollbar */
     *overflow: auto;
 }
+
+div#toolbar {
+    visibility:hidden;
+}
