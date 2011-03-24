@@ -1,120 +1,122 @@
-<!DOCTYPE TS><TS>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.0">
 <context>
     <name>design/standard/datatype/edit/ezcssstyle</name>
     <message>
         <source>New CSS rule</source>
-        <translation>Uusi CSS-sääntö</translation>
+        <translation type="obsolete">Uusi CSS-sääntö</translation>
     </message>
     <message>
         <source>Alias:</source>
-        <translation>Alias:</translation>
+        <translation type="obsolete">Alias:</translation>
     </message>
     <message>
         <source>Selector:</source>
-        <translation>Valitsija:</translation>
+        <translation type="obsolete">Valitsija:</translation>
     </message>
     <message>
         <source>Create style</source>
-        <translation>Luo tyyli</translation>
+        <translation type="obsolete">Luo tyyli</translation>
     </message>
     <message>
         <source>Add property</source>
-        <translation>Lisää ominaisuus</translation>
+        <translation type="obsolete">Lisää ominaisuus</translation>
     </message>
     <message>
         <source>Property:</source>
-        <translation>Ominaisuus:</translation>
+        <translation type="obsolete">Ominaisuus:</translation>
     </message>
     <message>
         <source>Style:</source>
-        <translation>Tyyli:</translation>
+        <translation type="obsolete">Tyyli:</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation>Lisää</translation>
+        <translation type="obsolete">Lisää</translation>
     </message>
     <message>
         <source>Move up.</source>
-        <translation>Siirrä ylös.</translation>
+        <translation type="obsolete">Siirrä ylös.</translation>
     </message>
     <message>
         <source>Move down.</source>
-        <translation>Siirrä alas.</translation>
+        <translation type="obsolete">Siirrä alas.</translation>
     </message>
     <message>
         <source>Choose image</source>
-        <translation>Valitse kuva</translation>
+        <translation type="obsolete">Valitse kuva</translation>
     </message>
     <message>
         <source>Remove image</source>
-        <translation>Poista kuva</translation>
+        <translation type="obsolete">Poista kuva</translation>
     </message>
     <message>
         <source>Remove properties</source>
-        <translation>Poista ominaisuudet</translation>
+        <translation type="obsolete">Poista ominaisuudet</translation>
     </message>
     <message>
         <source>Remove rules</source>
-        <translation>Poista säännöt</translation>
+        <translation type="obsolete">Poista säännöt</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation>Vie</translation>
+        <translation type="obsolete">Vie</translation>
     </message>
     <message>
         <source>Format:</source>
-        <translation>Muoto:</translation>
+        <translation type="obsolete">Muoto:</translation>
     </message>
     <message>
         <source>XML</source>
-        <translation>XML</translation>
+        <translation type="obsolete">XML</translation>
     </message>
     <message>
         <source>CSS</source>
-        <translation>CSS</translation>
+        <translation type="obsolete">CSS</translation>
     </message>
     <message>
         <source>JSON</source>
-        <translation>JSON</translation>
+        <translation type="obsolete">JSON</translation>
     </message>
 </context>
 <context>
     <name>design/standard/datatype/edit/ezcssstyle_images</name>
     <message>
         <source>Current image</source>
-        <translation>Nykyinen kuva</translation>
+        <translation type="obsolete">Nykyinen kuva</translation>
     </message>
     <message>
         <source>No image selected.</source>
-        <translation>Kuvaa ei ole valittu.</translation>
+        <translation type="obsolete">Kuvaa ei ole valittu.</translation>
     </message>
     <message>
         <source>Available images</source>
-        <translation>Saatavilla olevat kuvat</translation>
+        <translation type="obsolete">Saatavilla olevat kuvat</translation>
     </message>
     <message>
         <source>Set</source>
-        <translation>Aseta</translation>
+        <translation type="obsolete">Aseta</translation>
     </message>
     <message>
         <source>Upload new image</source>
-        <translation>Lataa uusi kuva</translation>
+        <translation type="obsolete">Lataa uusi kuva</translation>
     </message>
     <message>
         <source>Name:</source>
-        <translation>Nimi:</translation>
+        <translation type="obsolete">Nimi:</translation>
     </message>
     <message>
         <source>File:</source>
-        <translation>Tiedosto:</translation>
+        <translation type="obsolete">Tiedosto:</translation>
     </message>
     <message>
         <source>Upload</source>
-        <translation>Lataa</translation>
+        <translation type="obsolete">Lataa</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation>Takaisin</translation>
+        <translation type="obsolete">Takaisin</translation>
     </message>
 </context>
 <context>
@@ -182,6 +184,45 @@
     <message>
         <source>Do you really want to remove selected image?</source>
         <translation>Haluatko varmasti poistaa valitun kuvan?</translation>
+    </message>
+    <message>
+        <source>Restore</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Version list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rules for</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Created</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modified</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Site style list</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>extension/ezstyleeditor</name>
+    <message>
+        <source>Image repository for given path / node ID does not exist. Please check ezstyleeditor.ini INI file configuration.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

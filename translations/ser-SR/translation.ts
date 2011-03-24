@@ -1,120 +1,122 @@
-<!DOCTYPE TS><TS>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.0">
 <context>
     <name>design/standard/datatype/edit/ezcssstyle</name>
     <message>
         <source>New CSS rule</source>
-        <translation>Novo CSS pravilo</translation>
+        <translation type="obsolete">Novo CSS pravilo</translation>
     </message>
     <message>
         <source>Alias:</source>
-        <translation>Pseudonim:</translation>
+        <translation type="obsolete">Pseudonim:</translation>
     </message>
     <message>
         <source>Selector:</source>
-        <translation>Selektor:</translation>
+        <translation type="obsolete">Selektor:</translation>
     </message>
     <message>
         <source>Create style</source>
-        <translation>Napravi stil</translation>
+        <translation type="obsolete">Napravi stil</translation>
     </message>
     <message>
         <source>Add property</source>
-        <translation>Dodaj svojstvo</translation>
+        <translation type="obsolete">Dodaj svojstvo</translation>
     </message>
     <message>
         <source>Property:</source>
-        <translation>Svojstvo:</translation>
+        <translation type="obsolete">Svojstvo:</translation>
     </message>
     <message>
         <source>Style:</source>
-        <translation>Stil:</translation>
+        <translation type="obsolete">Stil:</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation>Dodaj</translation>
+        <translation type="obsolete">Dodaj</translation>
     </message>
     <message>
         <source>Move up.</source>
-        <translation>Pomeri gore.</translation>
+        <translation type="obsolete">Pomeri gore.</translation>
     </message>
     <message>
         <source>Move down.</source>
-        <translation>Pomeri dole.</translation>
+        <translation type="obsolete">Pomeri dole.</translation>
     </message>
     <message>
         <source>Choose image</source>
-        <translation>Izaberi sliku</translation>
+        <translation type="obsolete">Izaberi sliku</translation>
     </message>
     <message>
         <source>Remove image</source>
-        <translation>Ukloni sliku</translation>
+        <translation type="obsolete">Ukloni sliku</translation>
     </message>
     <message>
         <source>Remove properties</source>
-        <translation>Ukloni svojstva</translation>
+        <translation type="obsolete">Ukloni svojstva</translation>
     </message>
     <message>
         <source>Remove rules</source>
-        <translation>Ukloni pravila</translation>
+        <translation type="obsolete">Ukloni pravila</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation>Izvoz</translation>
+        <translation type="obsolete">Izvoz</translation>
     </message>
     <message>
         <source>Format:</source>
-        <translation>Format:</translation>
+        <translation type="obsolete">Format:</translation>
     </message>
     <message>
         <source>XML</source>
-        <translation>XLM</translation>
+        <translation type="obsolete">XLM</translation>
     </message>
     <message>
         <source>CSS</source>
-        <translation>CSS</translation>
+        <translation type="obsolete">CSS</translation>
     </message>
     <message>
         <source>JSON</source>
-        <translation>JSON</translation>
+        <translation type="obsolete">JSON</translation>
     </message>
 </context>
 <context>
     <name>design/standard/datatype/edit/ezcssstyle_images</name>
     <message>
         <source>Current image</source>
-        <translation>Trenutna slika</translation>
+        <translation type="obsolete">Trenutna slika</translation>
     </message>
     <message>
         <source>No image selected.</source>
-        <translation>Nijedna slika nije izabrana.</translation>
+        <translation type="obsolete">Nijedna slika nije izabrana.</translation>
     </message>
     <message>
         <source>Available images</source>
-        <translation>Dostupne slike</translation>
+        <translation type="obsolete">Dostupne slike</translation>
     </message>
     <message>
         <source>Set</source>
-        <translation>Podesi</translation>
+        <translation type="obsolete">Podesi</translation>
     </message>
     <message>
         <source>Upload new image</source>
-        <translation>Otpremi novu sliku</translation>
+        <translation type="obsolete">Otpremi novu sliku</translation>
     </message>
     <message>
         <source>Name:</source>
-        <translation>Ime:</translation>
+        <translation type="obsolete">Ime:</translation>
     </message>
     <message>
         <source>File:</source>
-        <translation>Datoteka:</translation>
+        <translation type="obsolete">Datoteka:</translation>
     </message>
     <message>
         <source>Upload</source>
-        <translation>Otpremi</translation>
+        <translation type="obsolete">Otpremi</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation>Nazad</translation>
+        <translation type="obsolete">Nazad</translation>
     </message>
 </context>
 <context>
@@ -182,6 +184,45 @@
     <message>
         <source>Do you really want to remove selected image?</source>
         <translation>Da li zaista želiš da ukloniš izabranu sliku?</translation>
+    </message>
+    <message>
+        <source>Restore</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Version list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rules for</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Created</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modified</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Site style list</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>extension/ezstyleeditor</name>
+    <message>
+        <source>Image repository for given path / node ID does not exist. Please check ezstyleeditor.ini INI file configuration.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

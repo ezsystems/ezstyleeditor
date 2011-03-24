@@ -1,121 +1,123 @@
-<!DOCTYPE TS><TS>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.0">
 <context>
     <name>design/standard/datatype/edit/ezcssstyle</name>
     <message>
         <source>New CSS rule</source>
-        <translation>Nové CSS pravidlo</translation>
+        <translation type="obsolete">Nové CSS pravidlo</translation>
     </message>
     <message>
         <source>Alias:</source>
-        <translation>Alias:</translation>
+        <translation type="obsolete">Alias:</translation>
     </message>
     <message>
         <source>Selector:</source>
-        <translation>Volič:</translation>
+        <translation type="obsolete">Volič:</translation>
     </message>
     <message>
         <source>Create style</source>
-        <translation>Vytvořit styl</translation>
+        <translation type="obsolete">Vytvořit styl</translation>
     </message>
     <message>
         <source>Add property</source>
-        <translation>Přidat vlastnost</translation>
+        <translation type="obsolete">Přidat vlastnost</translation>
     </message>
     <message>
         <source>Property:</source>
-        <translation>Vlastnosti:</translation>
+        <translation type="obsolete">Vlastnosti:</translation>
     </message>
     <message>
         <source>Style:</source>
-        <translation>Styl:</translation>
+        <translation type="obsolete">Styl:</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation>Přidat</translation>
+        <translation type="obsolete">Přidat</translation>
     </message>
     <message>
         <source>Move up.</source>
-        <translation>Jít nahoru.</translation>
+        <translation type="obsolete">Jít nahoru.</translation>
     </message>
     <message>
         <source>Move down.</source>
-        <translation>Jít dolů.</translation>
+        <translation type="obsolete">Jít dolů.</translation>
     </message>
     <message>
         <source>Choose image</source>
-        <translation>Vybrat obrázek</translation>
+        <translation type="obsolete">Vybrat obrázek</translation>
     </message>
     <message>
         <source>Remove image</source>
-        <translation>Vyjmout obrázek</translation>
+        <translation type="obsolete">Vyjmout obrázek</translation>
     </message>
     <message>
         <source>Remove properties</source>
-        <translation>Vyjmout vlastnosti
+        <translation type="obsolete">Vyjmout vlastnosti
 </translation>
     </message>
     <message>
         <source>Remove rules</source>
-        <translation>Vyjmout pravidla</translation>
+        <translation type="obsolete">Vyjmout pravidla</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation>Exportovat</translation>
+        <translation type="obsolete">Exportovat</translation>
     </message>
     <message>
         <source>Format:</source>
-        <translation>Formát:</translation>
+        <translation type="obsolete">Formát:</translation>
     </message>
     <message>
         <source>XML</source>
-        <translation>XML</translation>
+        <translation type="obsolete">XML</translation>
     </message>
     <message>
         <source>CSS</source>
-        <translation>CSS</translation>
+        <translation type="obsolete">CSS</translation>
     </message>
     <message>
         <source>JSON</source>
-        <translation>Nové CSS pravidlo</translation>
+        <translation type="obsolete">Nové CSS pravidlo</translation>
     </message>
 </context>
 <context>
     <name>design/standard/datatype/edit/ezcssstyle_images</name>
     <message>
         <source>Current image</source>
-        <translation>Stávající obrázek</translation>
+        <translation type="obsolete">Stávající obrázek</translation>
     </message>
     <message>
         <source>No image selected.</source>
-        <translation>Není vybrán žádný obrázek.</translation>
+        <translation type="obsolete">Není vybrán žádný obrázek.</translation>
     </message>
     <message>
         <source>Available images</source>
-        <translation>Obrázky k dispozici</translation>
+        <translation type="obsolete">Obrázky k dispozici</translation>
     </message>
     <message>
         <source>Set</source>
-        <translation>Nastavit</translation>
+        <translation type="obsolete">Nastavit</translation>
     </message>
     <message>
         <source>Upload new image</source>
-        <translation>Nahrát nový obrázek</translation>
+        <translation type="obsolete">Nahrát nový obrázek</translation>
     </message>
     <message>
         <source>Name:</source>
-        <translation>Jméno:</translation>
+        <translation type="obsolete">Jméno:</translation>
     </message>
     <message>
         <source>File:</source>
-        <translation>Soubor:</translation>
+        <translation type="obsolete">Soubor:</translation>
     </message>
     <message>
         <source>Upload</source>
-        <translation>Nahrát</translation>
+        <translation type="obsolete">Nahrát</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation>Zpět</translation>
+        <translation type="obsolete">Zpět</translation>
     </message>
 </context>
 <context>
@@ -183,6 +185,45 @@
     <message>
         <source>Do you really want to remove selected image?</source>
         <translation>Opravdu si přejete vyjmout vybraný obrázek?</translation>
+    </message>
+    <message>
+        <source>Restore</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Version list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rules for</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Created</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modified</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Site style list</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>extension/ezstyleeditor</name>
+    <message>
+        <source>Image repository for given path / node ID does not exist. Please check ezstyleeditor.ini INI file configuration.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

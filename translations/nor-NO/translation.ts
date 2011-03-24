@@ -1,120 +1,122 @@
-<!DOCTYPE TS><TS>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.0">
 <context>
     <name>design/standard/datatype/edit/ezcssstyle</name>
     <message>
         <source>New CSS rule</source>
-        <translation>Ny CSS-regel</translation>
+        <translation type="obsolete">Ny CSS-regel</translation>
     </message>
     <message>
         <source>Alias:</source>
-        <translation>Alias:</translation>
+        <translation type="obsolete">Alias:</translation>
     </message>
     <message>
         <source>Selector:</source>
-        <translation>Selektor:</translation>
+        <translation type="obsolete">Selektor:</translation>
     </message>
     <message>
         <source>Create style</source>
-        <translation>Lag stil</translation>
+        <translation type="obsolete">Lag stil</translation>
     </message>
     <message>
         <source>Add property</source>
-        <translation>Legg til egenskap</translation>
+        <translation type="obsolete">Legg til egenskap</translation>
     </message>
     <message>
         <source>Property:</source>
-        <translation>Egenskap:</translation>
+        <translation type="obsolete">Egenskap:</translation>
     </message>
     <message>
         <source>Style:</source>
-        <translation>Stil:</translation>
+        <translation type="obsolete">Stil:</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation>Legg til</translation>
+        <translation type="obsolete">Legg til</translation>
     </message>
     <message>
         <source>Move up.</source>
-        <translation>Flytt oppover.</translation>
+        <translation type="obsolete">Flytt oppover.</translation>
     </message>
     <message>
         <source>Move down.</source>
-        <translation>Flytt nedover.</translation>
+        <translation type="obsolete">Flytt nedover.</translation>
     </message>
     <message>
         <source>Choose image</source>
-        <translation>Velg bilde</translation>
+        <translation type="obsolete">Velg bilde</translation>
     </message>
     <message>
         <source>Remove image</source>
-        <translation>Fjern bilde</translation>
+        <translation type="obsolete">Fjern bilde</translation>
     </message>
     <message>
         <source>Remove properties</source>
-        <translation>Fjern egenskaper</translation>
+        <translation type="obsolete">Fjern egenskaper</translation>
     </message>
     <message>
         <source>Remove rules</source>
-        <translation>Fjern regler</translation>
+        <translation type="obsolete">Fjern regler</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation>Eksporter</translation>
+        <translation type="obsolete">Eksporter</translation>
     </message>
     <message>
         <source>Format:</source>
-        <translation>Format:</translation>
+        <translation type="obsolete">Format:</translation>
     </message>
     <message>
         <source>XML</source>
-        <translation>XML</translation>
+        <translation type="obsolete">XML</translation>
     </message>
     <message>
         <source>CSS</source>
-        <translation>CSS</translation>
+        <translation type="obsolete">CSS</translation>
     </message>
     <message>
         <source>JSON</source>
-        <translation>JSON</translation>
+        <translation type="obsolete">JSON</translation>
     </message>
 </context>
 <context>
     <name>design/standard/datatype/edit/ezcssstyle_images</name>
     <message>
         <source>Current image</source>
-        <translation>Aktivt bilde</translation>
+        <translation type="obsolete">Aktivt bilde</translation>
     </message>
     <message>
         <source>No image selected.</source>
-        <translation>Ingen bilder er valgt.</translation>
+        <translation type="obsolete">Ingen bilder er valgt.</translation>
     </message>
     <message>
         <source>Available images</source>
-        <translation>Tilgjengelige bilder</translation>
+        <translation type="obsolete">Tilgjengelige bilder</translation>
     </message>
     <message>
         <source>Set</source>
-        <translation>Velg</translation>
+        <translation type="obsolete">Velg</translation>
     </message>
     <message>
         <source>Upload new image</source>
-        <translation>Last opp nytt bilde</translation>
+        <translation type="obsolete">Last opp nytt bilde</translation>
     </message>
     <message>
         <source>Name:</source>
-        <translation>Navn:</translation>
+        <translation type="obsolete">Navn:</translation>
     </message>
     <message>
         <source>File:</source>
-        <translation>Fil:</translation>
+        <translation type="obsolete">Fil:</translation>
     </message>
     <message>
         <source>Upload</source>
-        <translation>Last opp</translation>
+        <translation type="obsolete">Last opp</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation>Tilbake</translation>
+        <translation type="obsolete">Tilbake</translation>
     </message>
 </context>
 <context>
@@ -182,6 +184,45 @@
     <message>
         <source>Do you really want to remove selected image?</source>
         <translation>Er du sikker på at du vil fjerne de valgte bildene?</translation>
+    </message>
+    <message>
+        <source>Restore</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Version list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rules for</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Created</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modified</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Site style list</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>extension/ezstyleeditor</name>
+    <message>
+        <source>Image repository for given path / node ID does not exist. Please check ezstyleeditor.ini INI file configuration.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
