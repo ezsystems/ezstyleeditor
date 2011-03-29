@@ -31,7 +31,7 @@ class ezstyleeditorInfo
         return array( 'Name' => 'eZ Style Editor',
                       'Version' => '//autogentag//',
                       'Copyright' => 'Copyright (C) 1999-2010 eZ Systems AS',
-                      'License' => '//EZP_LICENSE//'
+                      'License' => 'GNU General Public License v2.0'
                      );
     }
 }
