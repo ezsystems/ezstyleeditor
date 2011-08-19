@@ -31,6 +31,21 @@ YAHOO.ez.StyleEditor = function() {
         private section
     */
 
+    /**
+     * Handle the form token needed when posting something
+     * if ezformtoken extension is enabled (CSRF protection)
+     *
+     * @return string the post query string or an empty string
+     */
+    var postToken = function() {
+        var _token = '',
+            _tokenNode = document.getElementById('ezxform_token_js');
+        if ( _tokenNode ) {
+            _token = 'ezxform_token=' + _tokenNode.getAttribute('title');
+        }
+        return _token;
+    }
+
     var handleError = function(errObj) {
         var oDiv = document.createElement("div"),
             oDivErrorCode = document.createElement("div"),
@@ -217,7 +232,7 @@ YAHOO.ez.StyleEditor = function() {
                 
         };
         
-        yuc.asyncRequest( "POST", oCfg.requestpath + "/" + sServerCall, oCallbacks );
+        yuc.asyncRequest( "POST", oCfg.requestpath + "/" + sServerCall, oCallbacks, postToken() );
     }
     
     var getSiteStyles = function( target ) {
@@ -299,7 +314,7 @@ YAHOO.ez.StyleEditor = function() {
                 
             };
             
-            yuc.asyncRequest( "POST", oCfg.requestpath + "/" + sServerCall, oCallbacks );
+            yuc.asyncRequest( "POST", oCfg.requestpath + "/" + sServerCall, oCallbacks, postToken() );
     }
     
     var addNewProperty = function( property, i ) {
@@ -659,7 +674,8 @@ YAHOO.ez.StyleEditor = function() {
                                 + encodeURIComponent( "Params[element][id]" ) + "=" + encodeURIComponent( oElement.element.id ) + "&" 
                                 + encodeURIComponent( "Params[element][class]" ) + "=" + encodeURIComponent( oElement.element.classname ) + "&" 
                                 + encodeURIComponent( "Params[rule][selector]" ) + "=" + encodeURIComponent( oElement.selector ) + "&" 
-                                + encodeURIComponent( "Params[rule][alias]" ) + "=" + encodeURIComponent( oElement.alias );
+                                + encodeURIComponent( "Params[rule][alias]" ) + "=" + encodeURIComponent( oElement.alias ) + '&'
+                                + postToken();
             var oCallbacks = {
                 success: function (o) {
                 
@@ -859,7 +875,7 @@ YAHOO.ez.StyleEditor = function() {
                 
             };
             
-            yuc.asyncRequest( "POST", oCfg.requestpath + "/" + sServerCall, oCallbacks );
+            yuc.asyncRequest( "POST", oCfg.requestpath + "/" + sServerCall, oCallbacks, postToken() );
     }
 
     var addProperty = function(e, args) {
@@ -874,7 +890,8 @@ YAHOO.ez.StyleEditor = function() {
                             + encodeURIComponent( "Params[element][id]" ) + "=" + encodeURIComponent( oElement.element.id ) + "&" 
                             + encodeURIComponent( "Params[element][class]" ) + "=" + encodeURIComponent( oElement.element.classname ) + "&" 
                             + encodeURIComponent( "Params[rule][selector]" ) + "=" + encodeURIComponent( oElement.selector ) + "&" 
-                            + encodeURIComponent( "Params[rule][alias]" ) + "=" + encodeURIComponent( oElement.alias );
+                            + encodeURIComponent( "Params[rule][alias]" ) + "=" + encodeURIComponent( oElement.alias ) + '&'
+                            + postToken();
         
         var oCallbacks = {
             success: function (o) {
@@ -947,7 +964,7 @@ YAHOO.ez.StyleEditor = function() {
             }
         };
 
-        yuc.asyncRequest('POST', oCfg.requestpath + "/" + sServerCall, oCallbacks );
+        yuc.asyncRequest('POST', oCfg.requestpath + "/" + sServerCall, oCallbacks, postToken() );
         
         var oCImageFileInput = yud.get("ezste-image-file");
         var oImageFileInput = document.createElement("input");
@@ -1074,7 +1091,7 @@ YAHOO.ez.StyleEditor = function() {
             timeout : 10000
         };
 
-        yuc.asyncRequest( 'POST', oCfg.requestpath + "/" + sServerCall, oCallbacks );
+        yuc.asyncRequest( 'POST', oCfg.requestpath + "/" + sServerCall, oCallbacks, postToken() );
     };
     
 
@@ -1180,7 +1197,8 @@ YAHOO.ez.StyleEditor = function() {
 
             var sServerCall = "ezcsse::removeimage";
             var sPostData = encodeURIComponent( oRadio.name ) + "=" + encodeURIComponent( oRadio.value ) + "&" 
-                            + encodeURIComponent( oInput.name ) + "=" + encodeURIComponent( oInput.value );
+                            + encodeURIComponent( oInput.name ) + "=" + encodeURIComponent( oInput.value ) + '&'
+                            + postToken();
             var oCallbacks = {
                 success: function (o) {
                     getImageList( oInsertImgContentDiv );
@@ -1264,7 +1282,7 @@ YAHOO.ez.StyleEditor = function() {
                 timeout : 10000
             };
             
-            yuc.asyncRequest('POST', oCfg.requestpath + "/" + sServerCall, oCallbacks );
+            yuc.asyncRequest('POST', oCfg.requestpath + "/" + sServerCall, oCallbacks, postToken() );
         }
         
     };
@@ -1390,7 +1408,7 @@ YAHOO.ez.StyleEditor = function() {
             timeout : 10000
         };
             
-        yuc.asyncRequest('POST', oCfg.requestpath + "/" + sServerCall, oCallbacks);
+        yuc.asyncRequest('POST', oCfg.requestpath + "/" + sServerCall, oCallbacks, postToken());
 
         this.hide();
     };
@@ -1414,7 +1432,8 @@ YAHOO.ez.StyleEditor = function() {
         oSiteStylesDiv.appendChild( oLoadingDiv );
 
         sServerCall = "ezcsse::createsitestyle";
-        sPostData = encodeURIComponent( "Params[site_style][name]" )  + "=" +  encodeURIComponent(  oSiteStyleNameInput.value );
+        sPostData = encodeURIComponent( "Params[site_style][name]" )  + "=" +  encodeURIComponent(  oSiteStyleNameInput.value ) + '&'
+                    + postToken();
 
         var oCallbacks = {
             success: function (o) {
@@ -1765,7 +1784,7 @@ YAHOO.ez.StyleEditor = function() {
             timeout : 10000
         };
             
-        yuc.asyncRequest('POST', oCfg.requestpath + "/" + sServerCall, oCallbacks);
+        yuc.asyncRequest('POST', oCfg.requestpath + "/" + sServerCall, oCallbacks, postToken());
 
         this.hide();
     };
@@ -1963,7 +1982,7 @@ YAHOO.ez.StyleEditor = function() {
             timeout : 10000
         };
             
-        yuc.asyncRequest('POST', oCfg.requestpath + "/" + sServerCall, oCallbacks);
+        yuc.asyncRequest('POST', oCfg.requestpath + "/" + sServerCall, oCallbacks, postToken());
     }
 
     var groupDialogSubmit = function() {
