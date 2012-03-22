@@ -226,7 +226,7 @@
     <name>extension/ezstyleeditor</name>
     <message>
         <source>Image repository for given path / node ID does not exist. Please check ezstyleeditor.ini INI file configuration.</source>
-        <translation type="unfinished"></translation>
+        <translation>Repositório de imagem para o caminho especificado / ID do nó não existe. Por favor verifique o arquivo de configuração INI ezstyleeditor.ini.</translation>
     </message>
 </context>
 </TS>
