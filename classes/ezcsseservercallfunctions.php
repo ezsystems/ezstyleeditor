@@ -427,15 +427,11 @@ class ezcsseServerCallFunctions
             
         $imageNode = eZContentObjectTreeNode::fetch( $imageNodeID );
             
-        if( $imageNode instanceof eZContentObjectTreeNode )
+        if ( $imageNode instanceof eZContentObjectTreeNode &&
+                $imageNode->attribute( 'can_remove' )
+           )
         {
-            $imageObject = $imageNode->object();
-                
-            if( $imageObject instanceof eZContentObject )
-            {
-                $imageObject->remove();
-                $imageObject->purge();
-            }
+            $imageNode->removeNodeFromTree( false );
         }
     }
 
