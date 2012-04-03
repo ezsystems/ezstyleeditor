@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0">
+<TS version="2.0" language="sv_SE">
 <context>
     <name>design/standard/datatype/edit/ezcssstyle</name>
     <message>
@@ -187,42 +187,42 @@
     </message>
     <message>
         <source>Restore</source>
-        <translation type="unfinished"></translation>
+        <translation>Återställ</translation>
     </message>
     <message>
         <source>Create</source>
-        <translation type="unfinished"></translation>
+        <translation>Skapa</translation>
     </message>
     <message>
         <source>Version list</source>
-        <translation type="unfinished"></translation>
+        <translation>Versioner</translation>
     </message>
     <message>
         <source>Rules for</source>
-        <translation type="unfinished"></translation>
+        <translation>Regler för</translation>
     </message>
     <message>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Version</translation>
     </message>
     <message>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>Skapad</translation>
     </message>
     <message>
         <source>Modified</source>
-        <translation type="unfinished"></translation>
+        <translation>Ändrad</translation>
     </message>
     <message>
         <source>Site style list</source>
-        <translation type="unfinished"></translation>
+        <translation>Webbplatsstilar</translation>
     </message>
 </context>
 <context>
     <name>extension/ezstyleeditor</name>
     <message>
         <source>Image repository for given path / node ID does not exist. Please check ezstyleeditor.ini INI file configuration.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bildrepositoriet för angiven sökväg/nod-id finns inte. Kontrollera ezstyleeditor.ini-konfigurationen.</translation>
     </message>
 </context>
 </TS>
