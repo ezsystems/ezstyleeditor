@@ -54,7 +54,7 @@ class ezcsseProperty
     public function attribute( $name )
     {
         if ( $this->hasAttribute( $name ) )
-            return $this->attributes[$name];
+            return strip_tags( $this->attributes[$name] );
         else
             return false;
     }
