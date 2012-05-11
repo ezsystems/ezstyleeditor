@@ -1841,16 +1841,16 @@ YAHOO.ez.StyleEditor = function() {
                 var oName = oForm.elements[j].name;
             
                 if( oName == "Params[properties][" + i + "][value]" ) {
-                    oProperty.value = oElement.value;
+                    oProperty.value = strip_tags( oElement.value );
                 }
                 
                 if( oName == "Params[properties][" + i + "][keyword]" ) {
                     if ( oElement.nodeName.toLowerCase() == "select" && oElement.disabled == false ) {
                         oProperty.keyword = oElement.options[oElement.selectedIndex].value;
                     } else if ( oElement.nodeName.toLowerCase() == "input" ) {
-                        oProperty.keyword = oElement.value;
+                        oProperty.keyword = strip_tags( oElement.value );
                     } else {
-                        oProperty.keyword = oProperty.value;
+                        oProperty.keyword = strip_tags( oProperty.value );
                     }
                 }
                 
@@ -2056,6 +2056,10 @@ YAHOO.ez.StyleEditor = function() {
         }
 
         oCachedProperties = [];
+    }
+
+    var strip_tags = function(str) {
+        return str.replace(/(<([^>]+)>)/ig,"");
     }
 
     /*
