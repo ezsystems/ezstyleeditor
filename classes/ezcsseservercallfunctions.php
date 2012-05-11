@@ -190,7 +190,7 @@ class ezcsseServerCallFunctions
             if ( !$property instanceof ezcsseProperty )
                 continue;
 
-            $value = isset( $propValue['value'] ) ? $propValue['value'] : '';    
+            $value = isset( $propValue['value'] ) ? strip_tags( $propValue['value'] ) : '';    
             
             switch( $property->attribute( 'name' ) ) 
             {
@@ -200,8 +200,8 @@ class ezcsseServerCallFunctions
                 break;
             }
             
-            $keyword = isset( $propValue['keyword'] ) ? $propValue['keyword'] : '';
-            $length = isset( $propValue['length'] ) ? $propValue['length'] : '';
+            $keyword = isset( $propValue['keyword'] ) ? strip_tags( $propValue['keyword'] ) : '';
+            $length = isset( $propValue['length'] ) ? strip_tags( $propValue['length'] ) : '';
                             
             $property->setAttribute( 'keyword', $keyword );
             $property->setAttribute( 'length', $length );
