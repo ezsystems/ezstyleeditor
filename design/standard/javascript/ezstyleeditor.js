@@ -107,12 +107,11 @@ YAHOO.ez.StyleEditor = function() {
         var oCallbacks = {
             success: function (o) {
             
-                var oResponse = {};
+                var oResponse = {}, aSiteStyles = [];
 
                 try {
-                    
                     oResponse = YAHOO.lang.JSON.parse(o.responseText);
-                
+                    aSiteStyles = oResponse.content;
                 }
                 catch (x) {
                     
@@ -164,8 +163,8 @@ YAHOO.ez.StyleEditor = function() {
                 
                 oRestoreStylesDiv.appendChild( oObjectIDInput );
                 
-                for (var i = 0; i < oResponse.length; i++) {
-                    var oSiteStyleVersion = oResponse[i];
+                for (var i = 0; i < aSiteStyles.length; i++) {
+                    var oSiteStyleVersion = aSiteStyles[i];
                     var oTr = document.createElement("tr");
                     
                     var oTdSiteStyleSel = document.createElement("td");
@@ -232,7 +231,7 @@ YAHOO.ez.StyleEditor = function() {
                 
         };
         
-        yuc.asyncRequest( "POST", oCfg.requestpath + "/" + sServerCall, oCallbacks, postToken() );
+        yuc.asyncRequest( "POST", oCfg.requestpath + "/" + sServerCall + "?ContentType=json", oCallbacks, postToken() );
     }
     
     var getSiteStyles = function( target ) {
@@ -242,11 +241,12 @@ YAHOO.ez.StyleEditor = function() {
             var oCallbacks = {
                 success: function (o) {
                 
-                    var oResponse = {};
+                    var oResponse = {}, aSiteStyles = [];
 
                     try {
                     
                         oResponse = YAHOO.lang.JSON.parse(o.responseText);
+                        aSiteStyles = oResponse.content;
                 
                     }
                     catch (x) {
@@ -264,8 +264,8 @@ YAHOO.ez.StyleEditor = function() {
                     yud.addClass( oTable, "properties" );
                     var oTBody = document.createElement("tbody");
                     
-                    for( var i =0; i < oResponse.length; i++ ) {
-                        var oSiteStyle = oResponse[i];
+                    for( var i =0; i < aSiteStyles.length; i++ ) {
+                        var oSiteStyle = aSiteStyles[i];
                         var oTr = document.createElement("tr");
                         
                         var oTdSiteStyleSel = document.createElement("td");
@@ -314,7 +314,7 @@ YAHOO.ez.StyleEditor = function() {
                 
             };
             
-            yuc.asyncRequest( "POST", oCfg.requestpath + "/" + sServerCall, oCallbacks, postToken() );
+            yuc.asyncRequest( "POST", oCfg.requestpath + "/" + sServerCall + "?ContentType=json", oCallbacks, postToken() );
     }
     
     var addNewProperty = function( property, i ) {
@@ -679,11 +679,12 @@ YAHOO.ez.StyleEditor = function() {
             var oCallbacks = {
                 success: function (o) {
                 
-                    var oProperties = {};
+                    var oResponse = {}, oProperties = {};
 
                     try {
-                    
-                        oProperties = YAHOO.lang.JSON.parse(o.responseText);
+
+                        oResponse = YAHOO.lang.JSON.parse(o.responseText);
+                        oProperties = oResponse.content;
                         oCachedProperties.push( oProperties );                
                     }
                     catch (x) {
@@ -796,7 +797,7 @@ YAHOO.ez.StyleEditor = function() {
                 
             };
             
-            yuc.asyncRequest( 'POST', oCfg.requestpath + "/" + sServerCall, oCallbacks, sPostData );
+            yuc.asyncRequest( 'POST', oCfg.requestpath + "/" + sServerCall + "?ContentType=json", oCallbacks, sPostData );
 
     }
     
@@ -813,12 +814,11 @@ YAHOO.ez.StyleEditor = function() {
             var oCallbacks = {
                 success: function (o) {
                 
-                    var oResponse = {};
+                    var oResponse = {}, aCategories = [];
 
                     try {
-                    
                         oResponse = YAHOO.lang.JSON.parse(o.responseText);
-                
+                        aCategories = oResponse.content.categories;
                     }
                     catch (x) {
 
@@ -831,10 +831,10 @@ YAHOO.ez.StyleEditor = function() {
                     
                     oSelect = document.createElement("select");;
                     
-                    for( var i = 0; i < oResponse.categories.length; i++ )
+                    for( var i = 0; i < aCategories.length; i++ )
                     {
                         var oOptGroup = document.createElement("optgroup");
-                        var oPropCategory = oResponse.categories[i];
+                        var oPropCategory = aCategories[i];
                         oOptGroup.label = oPropCategory.name;
                         
                         for( var j = 0; j < oPropCategory.properties.length; j++ )
@@ -875,7 +875,7 @@ YAHOO.ez.StyleEditor = function() {
                 
             };
             
-            yuc.asyncRequest( "POST", oCfg.requestpath + "/" + sServerCall, oCallbacks, postToken() );
+            yuc.asyncRequest( "POST", oCfg.requestpath + "/" + sServerCall + "?ContentType=json", oCallbacks, postToken() );
     }
 
     var addProperty = function(e, args) {
@@ -895,17 +895,14 @@ YAHOO.ez.StyleEditor = function() {
         
         var oCallbacks = {
             success: function (o) {
-                var oProperty = {};
+                var oResponse = {}, oProperty = {};
 
                 try {
-                    
-                oProperty = YAHOO.lang.JSON.parse(o.responseText);
-        
+                    oResponse = YAHOO.lang.JSON.parse(o.responseText);
+                    oProperty = oResponse.content;
                 }
                 catch (x) {
-
                     return;
-        
                 }
                 
                 var oTable = yud.getElementBy( function(el) {
@@ -941,7 +938,7 @@ YAHOO.ez.StyleEditor = function() {
             timeout : 10000
         };
 
-        yuc.asyncRequest( 'POST', oCfg.requestpath + "/" + sServerCall, oCallbacks, sPostData );
+        yuc.asyncRequest( 'POST', oCfg.requestpath + "/" + sServerCall + "?ContentType=json", oCallbacks, sPostData );
     }
     
     var handleUpload = function(e) {
@@ -964,7 +961,7 @@ YAHOO.ez.StyleEditor = function() {
             }
         };
 
-        yuc.asyncRequest('POST', oCfg.requestpath + "/" + sServerCall, oCallbacks, postToken() );
+        yuc.asyncRequest('POST', oCfg.requestpath + "/" + sServerCall + "?ContentType=json", oCallbacks, postToken() );
         
         var oCImageFileInput = yud.get("ezste-image-file");
         var oImageFileInput = document.createElement("input");
@@ -983,10 +980,11 @@ YAHOO.ez.StyleEditor = function() {
         
         var oCallbacks = {
             success: function (o) {
-                var aImages = [];
+                var oResponse = {}, aImages = [];
 
                 try {
-                    aImages = YAHOO.lang.JSON.parse(o.responseText);
+                    oResponse = YAHOO.lang.JSON.parse(o.responseText);
+                    aImages = oResponse.content;
                 }
                 catch (x) {
                     return;
@@ -1091,7 +1089,7 @@ YAHOO.ez.StyleEditor = function() {
             timeout : 10000
         };
 
-        yuc.asyncRequest( 'POST', oCfg.requestpath + "/" + sServerCall, oCallbacks, postToken() );
+        yuc.asyncRequest( 'POST', oCfg.requestpath + "/" + sServerCall + "?ContentType=json", oCallbacks, postToken() );
     };
     
 
@@ -1213,7 +1211,7 @@ YAHOO.ez.StyleEditor = function() {
                 timeout : 10000
             };
 
-            yuc.asyncRequest('POST', oCfg.requestpath + "/" + sServerCall, oCallbacks, sPostData);
+            yuc.asyncRequest('POST', oCfg.requestpath + "/" + sServerCall + "?ContentType=json", oCallbacks, sPostData);
         }
     };
 
@@ -1282,7 +1280,7 @@ YAHOO.ez.StyleEditor = function() {
                 timeout : 10000
             };
             
-            yuc.asyncRequest('POST', oCfg.requestpath + "/" + sServerCall, oCallbacks, postToken() );
+            yuc.asyncRequest('POST', oCfg.requestpath + "/" + sServerCall + "?ContentType=json", oCallbacks, postToken() );
         }
         
     };
@@ -1359,10 +1357,11 @@ YAHOO.ez.StyleEditor = function() {
 
         var oCallbacks = {
             success: function (o) {
-                var oSiteStyle = {};
+                var oResponse = {}, oSiteStyle = {};
             
                 try {
-                    oSiteStyle = YAHOO.lang.JSON.parse(o.responseText);
+                    oResponse = YAHOO.lang.JSON.parse(o.responseText);
+                    oSiteStyle = oResponse.content;
                 }
                 catch (x) {
                     return;
@@ -1408,7 +1407,7 @@ YAHOO.ez.StyleEditor = function() {
             timeout : 10000
         };
             
-        yuc.asyncRequest('POST', oCfg.requestpath + "/" + sServerCall, oCallbacks, postToken());
+        yuc.asyncRequest('POST', oCfg.requestpath + "/" + sServerCall + "?ContentType=json", oCallbacks, postToken());
 
         this.hide();
     };
@@ -1448,7 +1447,7 @@ YAHOO.ez.StyleEditor = function() {
             timeout : 10000
         };
 
-        yuc.asyncRequest('POST', oCfg.requestpath + "/" + sServerCall, oCallbacks, sPostData);
+        yuc.asyncRequest('POST', oCfg.requestpath + "/" + sServerCall + "?ContentType=json", oCallbacks, sPostData);
     };
 
     var showGroupDialogBox = function(e, element) {
@@ -1735,10 +1734,11 @@ YAHOO.ez.StyleEditor = function() {
         
         var oCallbacks = {
             success: function (o) {
-                var oSiteStyle = {};
+                var oResponse = {}, oSiteStyle = {};
             
                 try {
-                    oSiteStyle = YAHOO.lang.JSON.parse(o.responseText);
+                    oResponse = YAHOO.lang.JSON.parse(o.responseText);
+                    oSiteStyle = oResponse.content;
                 }
                 catch (x) {
                     return;
@@ -1784,7 +1784,7 @@ YAHOO.ez.StyleEditor = function() {
             timeout : 10000
         };
             
-        yuc.asyncRequest('POST', oCfg.requestpath + "/" + sServerCall, oCallbacks, postToken());
+        yuc.asyncRequest('POST', oCfg.requestpath + "/" + sServerCall + "?ContentType=json", oCallbacks, postToken());
 
         this.hide();
     };
@@ -1940,10 +1940,11 @@ YAHOO.ez.StyleEditor = function() {
 
         var oCallbacks = {
             success: function (o) {
-                var oProperties = {};
+                var oResponse = {}, oProperties = {};
         
                 try {
-                    oProperties = YAHOO.lang.JSON.parse(o.responseText);
+                    oResponse = YAHOO.lang.JSON.parse(o.responseText);
+                    oProperties = oResponse.content;
                 }
                 catch (x) {
                     return;
@@ -1982,7 +1983,7 @@ YAHOO.ez.StyleEditor = function() {
             timeout : 10000
         };
             
-        yuc.asyncRequest('POST', oCfg.requestpath + "/" + sServerCall, oCallbacks, postToken());
+        yuc.asyncRequest('POST', oCfg.requestpath + "/" + sServerCall + "?ContentType=json", oCallbacks, postToken());
     }
 
     var groupDialogSubmit = function() {

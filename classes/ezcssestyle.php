@@ -219,6 +219,35 @@ class ezcsseStyle
     }
 
     /**
+     * Returns current object as an array
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        $res = array();
+
+        foreach ( $this->attributes as $attrName => $attrValue )
+        {
+            switch ( $attrName )
+            {
+                case 'rules':
+                    $res[$attrName] = array();
+                    foreach ( $attrValue as $rule )
+                    {
+                        $res[$attrName][] = $rule->toArray();
+                    }
+                    break;
+                default:
+                    $res[$attrName] = $attrValue;
+                    break;
+            }
+        }
+
+        return $res;
+    }
+
+    /**
      * Returns a CSS string for current object
      * 
      * @return string A CSS string 

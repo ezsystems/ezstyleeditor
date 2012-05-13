@@ -14,34 +14,34 @@ class ezcsseServerCallFunctions
     public function __construct() {}
 
     /**
-     * Returns the list of properties for CSS rule in JSON format
+     * Returns the list of properties for CSS rule as an array
      * 
      * @static
-     * @return string The JSON string
+     * @return array List of properties
      */
     public static function getElementStyles()
     {
         // Get currently selected ezcsseSiteStyle object
         $styleDefinition = self::getStyleDefinition();
-        
+
         // Get style defintion object
         if ( !$styleDefinition instanceof ezcsseSiteStyleDefinition )
             return;
 
         $style = ezcsseStyle::createFromXML( $styleDefinition->attribute( 'style' ) );
-        
+
         if ( !$style instanceof ezcsseStyle )
             return;
 
         $params = self::getPostParams();
         $selector = self::buildSelector( $params );
-        
+
         // Get rule alias
         $rule = isset( $params['rule'] ) ? $params['rule'] : array();
         $alias = isset( $rule['alias'] ) ? $rule['alias'] : null;
 
         $rule = $style->getRuleBySelector( $selector );
-        
+
         if ( $rule instanceof ezcsseRule )
         {
             foreach( $rule->attribute( 'properties' ) as $property )
@@ -60,49 +60,50 @@ class ezcsseServerCallFunctions
             $rule = $style->addRule( new ezcsseRule );
             $rule->setAttribute( 'selector', $selector );
             $rule->setAttribute( 'alias', $alias );
-            
+
             $styleDefinition->setAttribute( 'style', $style->toXML() );
             $styleDefinition->store();
         }
 
-        return $rule->toJSON();
+        return $rule->toArray();
     }
 
     /**
      * Adds a new CSS property to given rule
-     * 
+     *
      * @static
+     * @return array
      */
     public static function addProperty()
     {
         // Get currently selected ezcsseSiteStyle object
         $styleDefinition = self::getStyleDefinition();
-        
+
         // Get style defintion object
         if ( !$styleDefinition instanceof ezcsseSiteStyleDefinition )
             return;
 
         $style = ezcsseStyle::createFromXML( $styleDefinition->attribute( 'style' ) );
-        
+
         if ( !$style instanceof ezcsseStyle )
             return;
 
         $params = self::getPostParams();
         $selector = self::buildSelector( $params );
-        
+
         // Get property name
         $property = isset( $params['property'] ) ? $params['property'] : array();
         $name = isset( $property['name'] ) ? $property['name'] : null;
-        
+
         $rule = $style->getRuleBySelector( $selector );
-            
+
         if ( $rule instanceof ezcsseRule )
         {
             $property = $rule->addProperty( new ezcsseProperty() );
             $property->setAttribute( 'name', $name );
             $property->setAttribute( 'value', '' );
         }
-        
+
         $styleDefinition->setAttribute( 'style', $style->toXML() );
         $styleDefinition->store();
 
@@ -110,28 +111,28 @@ class ezcsseServerCallFunctions
 
         foreach( $propertyArray['result'] as $attrName => $attrValue )
         {
-        	$property->setAttribute( $attrName, $attrValue  );
+            $property->setAttribute( $attrName, $attrValue  );
         }
-        
-        return $property->toJSON();
+
+        return $property->toArray();
     }
 
     /**
      * Remove CSS properties from given rule
-     * 
+     *
      * @static
      */
     public static function removeProperties()
     {
         // Get currently selected ezcsseSiteStyle object
         $styleDefinition = self::getStyleDefinition();
-        
+
         // Get style defintion object
         if ( !$styleDefinition instanceof ezcsseSiteStyleDefinition )
             return;
 
         $style = ezcsseStyle::createFromXML( $styleDefinition->attribute( 'style' ) );
-        
+
         if ( !$style instanceof ezcsseStyle )
             return;
 
@@ -139,7 +140,7 @@ class ezcsseServerCallFunctions
         $selector = self::buildSelector( $params );
 
         $rule = $style->getRuleBySelector( $selector );
-            
+
         if( $rule instanceof ezcsseRule )
         {
             $propertyRemoveArray = isset( $params['remove_property'] ) ? $params['remove_property'] : array();
@@ -154,21 +155,21 @@ class ezcsseServerCallFunctions
 
     /**
      * Store the CSS properties for a given rule
-     * 
+     *
      * @static
-     * @return string A JSON string 
+     * @return array
      */
     public static function storeProperties()
     {
         // Get currently selected ezcsseSiteStyle object
         $styleDefinition = self::getStyleDefinition();
-        
+
         // Get style defintion object
         if ( !$styleDefinition instanceof ezcsseSiteStyleDefinition )
             return;
 
         $style = ezcsseStyle::createFromXML( $styleDefinition->attribute( 'style' ) );
-        
+
         if ( !$style instanceof ezcsseStyle )
             return;
 
@@ -176,7 +177,7 @@ class ezcsseServerCallFunctions
         $selector = self::buildSelector( $params );
 
         $rule = $style->getRuleBySelector( $selector );
-        
+
         if( !$rule instanceof ezcsseRule )
             return;
 
@@ -190,22 +191,22 @@ class ezcsseServerCallFunctions
             if ( !$property instanceof ezcsseProperty )
                 continue;
 
-            $value = isset( $propValue['value'] ) ? strip_tags( $propValue['value'] ) : '';    
-            
-            switch( $property->attribute( 'name' ) ) 
+            $value = isset( $propValue['value'] ) ? strip_tags( $propValue['value'] ) : '';
+
+            switch( $property->attribute( 'name' ) )
             {
                 case 'background-color':
                     if( $value == '' )
                         $value = 'transparent';
                 break;
             }
-            
+
             $keyword = isset( $propValue['keyword'] ) ? strip_tags( $propValue['keyword'] ) : '';
             $length = isset( $propValue['length'] ) ? strip_tags( $propValue['length'] ) : '';
-                            
+
             $property->setAttribute( 'keyword', $keyword );
             $property->setAttribute( 'length', $length );
-                            
+
             if( $keyword != '' && $length != '' )
                 $property->setAttribute( 'value', $keyword . $length );
             else if( $value != '' && $length != '' )
@@ -215,20 +216,21 @@ class ezcsseServerCallFunctions
             else
                 $property->setAttribute( 'value', $value );
         }
-        
+
         $styleDefinition->setAttribute( 'style', $style->toXML() );
         $styleDefinition->store();
-        
+
         if ( $objectID )
-            eZContentCacheManager::clearTemplateBlockCache( $objectID ); 
-        
-        return $rule->toJSON();
+            eZContentCacheManager::clearTemplateBlockCache( $objectID );
+
+        return $rule->toArray();
     }
 
     /**
      * Stores new site style
-     * 
-     * @static 
+     *
+     * @static
+     * @return array
      */
     public static function storeSiteStyle()
     {
@@ -240,90 +242,91 @@ class ezcsseServerCallFunctions
 
         $db = eZDB::instance();
         $db->begin();
-        
+
         $currSiteStyle = ezcsseSiteStyle::fetchObject( ezcsseSiteStyle::definition(), null, array( 'selected' => 1 ) );
         $currSiteStyle->setAttribute( 'selected', 0 );
         $currSiteStyle->store();
-        
+
         $siteStyle = ezcsseSiteStyle::fetchObject( ezcsseSiteStyle::definition(), null, array( 'id' => $siteStyleID ) );
         $siteStyle->setAttribute( 'selected', 1 );
         $siteStyle->store();
 
         $db->commit();
-        
-        $siteStyleDef = ezcsseSiteStyleDefinition::fetchObject( ezcsseSiteStyleDefinition::definition(), 
-                                                                null, 
+
+        $siteStyleDef = ezcsseSiteStyleDefinition::fetchObject( ezcsseSiteStyleDefinition::definition(),
+                                                                null,
                                                                 array( 'sitestyle_id' => $siteStyle->attribute( 'id' ),
                                                                        'version' => $siteStyle->attribute( 'current_version' ) ) );
         $style = ezcsseStyle::createFromXML( $siteStyleDef->attribute( 'style' ) );
 
         if ( $objectID )
             eZContentCacheManager::clearTemplateBlockCache( $objectID );
-        
-        return $style->toJSON();
+
+        return $style->toArray();
     }
 
     /**
      * Restore site style to given version
      *
      * @static
+     * @return array
      */
     public static function restoreSiteStyle()
     {
         $params = self::getPostParams();
-        
+
         $siteStyleVerParam = isset( $params['sitestyle_version'] ) ? $params['sitestyle_version'] : array();
         $siteStyleVerID = isset( $siteStyleVerParam['id'] ) ? $siteStyleVerParam['id'] : null;
         $objectID = isset( $params['object_id'] ) ? $params['object_id'] : null;
-        
-        $siteStyleVersion =  ezcsseSiteStyleVersion::fetchObject( ezcsseSiteStyleVersion::definition(), 
-                                                                  null, 
+
+        $siteStyleVersion =  ezcsseSiteStyleVersion::fetchObject( ezcsseSiteStyleVersion::definition(),
+                                                                  null,
                                                                   array( 'id' => $siteStyleVerID ) );
-        $siteStyle = ezcsseSiteStyle::fetchObject( ezcsseSiteStyle::definition(), 
-                                                   null, 
+        $siteStyle = ezcsseSiteStyle::fetchObject( ezcsseSiteStyle::definition(),
+                                                   null,
                                                    array( 'id' => $siteStyleVersion->attribute( 'sitestyle_id' ) ) );
         $currentVersion = $siteStyle->attribute('current_version');
-        
-        $siteStyleDef = ezcsseSiteStyleDefinition::fetchObject( ezcsseSiteStyleDefinition::definition(), 
-                                                                null, 
+
+        $siteStyleDef = ezcsseSiteStyleDefinition::fetchObject( ezcsseSiteStyleDefinition::definition(),
+                                                                null,
                                                                 array( 'sitestyle_id' => $siteStyleVersion->attribute( 'sitestyle_id' ),
                                                                        'version' => $siteStyleVersion->attribute( 'version' ) ) );
         $style = $siteStyleDef->attribute( 'style' );
-        
+
         $newSiteStyleVersion = new ezcsseSiteStyleVersion();
         $newSiteStyleVersion->setAttribute( 'sitestyle_id', $siteStyle->attribute('id') );
         $newSiteStyleVersion->setAttribute( 'version', $currentVersion + 1 );
         $newSiteStyleVersion->setAttribute( 'created', time() );
         $newSiteStyleVersion->setAttribute( 'modified', time() );
         $newSiteStyleVersion->store();
-        
+
         $newSiteStyleDef = new ezcsseSiteStyleDefinition();
         $newSiteStyleDef->setAttribute( 'sitestyle_id', $siteStyle->attribute('id') );
         $newSiteStyleDef->setAttribute( 'version', $currentVersion + 1 );
         $newSiteStyleDef->setAttribute( 'style', $style );
         $newSiteStyleDef->store();
-        
+
         $siteStyle->setAttribute( 'current_version', $currentVersion + 1 );
         $siteStyle->store();
-        
+
         $style = ezcsseStyle::createFromXML( $style );
-        
+
         if ( $objectID )
             eZContentCacheManager::clearTemplateBlockCache( $objectID );
-        
-        return $style->toJSON();
+
+        return $style->toArray();
     }
 
     /**
      * Returns list of available images in the repository
-     * 
-     * @return string A JSON string with image list
+     *
+     * @return array Image list
      */
     public static function getImageList()
     {
         $ini = eZINI::instance( 'ezstyleeditor.ini' );
         $rootNodeValue = $ini->variable( 'StyleEditor', 'ImageRepository' );
-   
+
         if ( is_numeric( $rootNodeValue ) )
         {
             $node = eZContentObjectTreeNode::fetch( $rootNodeValue );
@@ -336,21 +339,20 @@ class ezcsseServerCallFunctions
 
         if ( !$node instanceof eZContentObjectTreeNode )
         {
-            echo json_encode( array( 'error' => ezpI18n::tr( 'extension/ezstyleeditor', 'Image repository for given path / node ID does not exist. Please check ezstyleeditor.ini INI file configuration.' ) ) );
-            return;
+            return array( 'error' => ezpI18n::tr( 'extension/ezstyleeditor', 'Image repository for given path / node ID does not exist. Please check ezstyleeditor.ini INI file configuration.' ) );
         }
 
         $images = eZContentObjectTreeNode::subTreeByNodeID( array( 'ClassFilterType' => 'include',
                                                                    'ClassFilterArray' => array( 'image' ) ), $node->attribute('node_id') );
 
         $imageList = array();
-            
+
         foreach( $images as $image )
         {
             $dataMap = $image->dataMap();
             $content = $dataMap['image']->content();
-            
-            // Create an image alias   
+
+            // Create an image alias
             $content->imageAlias( 'styleeditor' );
 
             $aliasList = $content->aliasList();
@@ -358,10 +360,10 @@ class ezcsseServerCallFunctions
             $path = $aliasList['styleeditor']['full_path'];
             $width = $aliasList['styleeditor']['width'];
             $height = $aliasList['styleeditor']['height'];
-                
+
             eZURI::transformURI( $originalPath, true );
             eZURI::transformURI( $path, true );
-                
+
             $nodeID = $image->attribute( 'node_id' );
             $name = $image->getName();
 
@@ -372,19 +374,17 @@ class ezcsseServerCallFunctions
             $imageRow['name'] = $name;
             $imageRow['width'] = $width;
             $imageRow['height'] = $height;
-            
+
             $imageList[] = $imageRow;
         }
-        
-        $json = json_encode( $imageList );
-        
-        echo $json;
+
+        return $imageList;
     }
 
     /**
      * Handles image upload operation
-     * 
-     * @static 
+     *
+     * @static
      */
     public static function uploadImage()
     {
@@ -406,7 +406,7 @@ class ezcsseServerCallFunctions
             $location = $contentNode->attribute( 'node_id' );
 
             $http = eZHTTPTool::instance();
-            
+
             $fileName = '';
             if ( $http->hasPostVariable( 'FileName' ) )
                 $fileName = $http->postVariable( 'FileName' );
@@ -416,17 +416,17 @@ class ezcsseServerCallFunctions
 
     /**
      * Removes image from the CSS Editor image repository
-     * 
-     * @static 
+     *
+     * @static
      */
     public static function removeImage()
     {
         $params = self::getPostParams();
         $image = isset( $params['image'] ) ? $params['image'] : array();
         $imageNodeID = isset( $image['node_id'] ) ? $image['node_id'] : null;
-            
+
         $imageNode = eZContentObjectTreeNode::fetch( $imageNodeID );
-            
+
         if ( $imageNode instanceof eZContentObjectTreeNode &&
                 $imageNode->attribute( 'can_remove' )
            )
@@ -437,15 +437,15 @@ class ezcsseServerCallFunctions
 
     /**
      * Return a list of available site styles
-     * 
+     *
      * @static
-     * @return string A JSON core 
+     * @return arrat List of available site styles
      */
     public static function getSiteStyles()
     {
         $res = array();
         $siteStyles = ezcsseSiteStyle::fetchObjectList( ezcsseSiteStyle::definition(), null, null );
-        
+
         foreach ( $siteStyles as $siteStyle )
         {
             $siteStyleRow = array();
@@ -453,68 +453,66 @@ class ezcsseServerCallFunctions
             $siteStyleRow['name'] = $siteStyle->attribute( 'name' );
             $siteStyleRow['version'] = $siteStyle->attribute( 'current_version' );
             $siteStyleRow['selected'] = $siteStyle->attribute( 'selected' );
-            
+
             $res[] = $siteStyleRow;
         }
 
-        $json = json_encode( $res );
-        
-        return $json;
+        return $res;
     }
 
     /**
      * Creates a new site style with given name
-     * 
-     * @static 
+     *
+     * @static
      */
     public static function createSiteStyle()
     {
         $params = self::getPostParams();
-        
+
         $siteStyleParam = isset( $params['site_style'] ) ? $params['site_style'] : array();
         $siteStyleName = isset( $siteStyleParam['name'] ) ? $siteStyleParam['name'] : null;
-        
+
         $siteStyle = new ezcsseSiteStyle();
         $siteStyle->setAttribute( 'name', $siteStyleName );
         $siteStyle->setAttribute( 'current_version', 1 );
         $siteStyle->setAttribute( 'selected', 0 );
         $siteStyle->store();
-        
+
         $siteStyleVersion = new ezcsseSiteStyleVersion();
         $siteStyleVersion->setAttribute( 'sitestyle_id', $siteStyle->attribute('id') );
         $siteStyleVersion->setAttribute( 'version', 1 );
         $siteStyleVersion->setAttribute( 'created', time() );
         $siteStyleVersion->setAttribute( 'modified', time() );
         $siteStyleVersion->store();
-        
+
         $siteStyleDef = new ezcsseSiteStyleDefinition();
         $siteStyleDef->setAttribute( 'sitestyle_id', $siteStyle->attribute('id') );
         $siteStyleDef->setAttribute( 'version', 1 );
         $siteStyleDef->store();
     }
-    
+
     /**
-     * Returns a JSON string with list of last versions
-     * 
+     * Returns an array with last site style versions
+     *
      * @static
-     * @return string A JSON string
+     * @return array List of available site style versions
      */
     public static function getSiteStyleVersions()
     {
         $params = self::getPostParams();
-        
+
         $siteStyleParam = isset( $params['site_style'] ) ? $params['site_style'] : array();
         $siteStyleID = isset( $siteStyleParam['id'] ) ? $siteStyleParam['id'] : null;
-        
+
         $siteStyle = ezcsseSiteStyle::fetch( $siteStyleID );
-        
+
         $name = null;
         if ( $siteStyle instanceof ezcsseSiteStyle )
             $name = $siteStyle->attribute( 'name' );
-        
-        $siteStyleVersions = ezcsseSiteStyleVersion::fetchObjectList( ezcsseSiteStyleVersion::definition(), 
-                                                                      null, 
-                                                                      array( 'sitestyle_id' => $siteStyleID ), 
+
+        $siteStyleVersions = ezcsseSiteStyleVersion::fetchObjectList( ezcsseSiteStyleVersion::definition(),
+                                                                      null,
+                                                                      array( 'sitestyle_id' => $siteStyleID ),
                                                                       array( 'id' => 'desc' ),
                                                                       array( 'limit' => 10 )  );
         $res = array();
@@ -526,18 +524,16 @@ class ezcsseServerCallFunctions
             $versionRow['created'] = $siteStyleVersion->attribute( 'created' );
             $versionRow['modified'] = $siteStyleVersion->attribute( 'modified' );
             $versionRow['name'] = $name;
-            
+
             $res[] = $versionRow;
         }
-        
-        $json = json_encode( $res );
-        
-        return $json;
+
+        return $res;
     }
 
     /**
      * Returns the ezcsseSiteStyleDefinition object
-     * 
+     *
      * @static
      * @return ezcsseSiteStyleDefinition
      */
@@ -546,13 +542,13 @@ class ezcsseServerCallFunctions
         $siteStyle = ezcsseSiteStyle::fetchObject( ezcsseSiteStyle::definition(), null, array( 'selected' => 1 ) );
         $version = $siteStyle->attribute( 'version' );
         $styleDefinition = $siteStyle->attribute( 'style' );
-        
+
         return $styleDefinition;
     }
 
     /**
      * A helper function which builds a selector from POST params
-     * 
+     *
      * @static
      * @param array $params
      * @return string|null The CSS selector
@@ -567,44 +563,44 @@ class ezcsseServerCallFunctions
         {
             $name = isset( $element['name'] ) ? $element['name'] : null;
             $id = isset( $element['id'] ) ? $element['id'] : null;
-            
+
             if ( $name != '' && $id != '' )
                 $selector = strtolower( $name ) . '#' . $id;
             else
                 $selector = strtolower( $name );
         }
-        
+
         return $selector;
     }
 
     /**
      * Returns the POST params from XHR request
-     * 
+     *
      * @static
-     * @return array The POST params 
+     * @return array The POST params
      */
     public static function getPostParams()
     {
         $http = eZHTTPTool::instance();
-        
+
         $params = array();
         if ( $http->hasPostVariable( 'Params' ) )
             $params = $http->postVariable( 'Params' );
-        
+
         return $params;
     }
 
     /**
      * Fetches CSS property list
-     * 
+     *
      * @static
-     * @return string A JSON string
+     * @return array List of available CSS properties
      */
     public static function getPropertyList()
     {
-        $json = ezcssePropertyFunctions::fetchListAsJSON();
-        
-        return $json;
+        $list = ezcssePropertyFunctions::fetchList();
+
+        return $list['result'];
     }
 }
 

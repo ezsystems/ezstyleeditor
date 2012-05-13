@@ -106,12 +106,22 @@ class ezcsseProperty
      */
     public function toCSS()
     {
-    	$property = '';
-    	
-    	if ( $this->attribute( 'value' ) != "" )
+        $property = '';
+
+        if ( $this->attribute( 'value' ) != "" )
             $property = ezcsseStyle::tabIndent() . $this->attribute( 'name' ) . ": " . $this->attribute( 'value' ) . ";";
 
         return $property;
+    }
+
+    /**
+     * Returns current object as an array
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return $this->attributes;
     }
 
     /**

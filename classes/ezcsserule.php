@@ -198,6 +198,35 @@ class ezcsseRule
         $json .= ezcsseStyle::rDelim();
         return $json;
     }
+
+    /**
+     * Returns current rule object as an array
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        $res = array();
+
+        foreach ( $this->attributes as $attrName => $attrValue )
+        {
+            switch ( $attrName )
+            {
+                case 'properties':
+                    $res[$attrName] = array();
+                    foreach ( $attrValue as $property )
+                    {
+                        $res[$attrName][] = $property->toArray();
+                    }
+                    break;
+                default:
+                    $res[$attrName] = $attrValue;
+                    break;
+            }
+        }
+
+        return $res;
+    }
     
     /**
      * Returns a current rule object as CSS string
