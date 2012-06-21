@@ -26,12 +26,16 @@ class ezcsseServerCallFunctions
 
         // Get style defintion object
         if ( !$styleDefinition instanceof ezcsseSiteStyleDefinition )
-            return;
+                {
+                    return;
+                }
 
         $style = ezcsseStyle::createFromXML( $styleDefinition->attribute( 'style' ) );
 
         if ( !$style instanceof ezcsseStyle )
-            return;
+                {
+                    return;
+                }
 
         $params = self::getPostParams();
         $selector = self::buildSelector( $params );
@@ -81,12 +85,16 @@ class ezcsseServerCallFunctions
 
         // Get style defintion object
         if ( !$styleDefinition instanceof ezcsseSiteStyleDefinition )
-            return;
+                {
+                    return;
+                }
 
         $style = ezcsseStyle::createFromXML( $styleDefinition->attribute( 'style' ) );
 
         if ( !$style instanceof ezcsseStyle )
-            return;
+                {
+                    return;
+                }
 
         $params = self::getPostParams();
         $selector = self::buildSelector( $params );
@@ -129,12 +137,16 @@ class ezcsseServerCallFunctions
 
         // Get style defintion object
         if ( !$styleDefinition instanceof ezcsseSiteStyleDefinition )
-            return;
+                {
+                    return;
+                }
 
         $style = ezcsseStyle::createFromXML( $styleDefinition->attribute( 'style' ) );
 
         if ( !$style instanceof ezcsseStyle )
-            return;
+                {
+                    return;
+                }
 
         $params = self::getPostParams();
         $selector = self::buildSelector( $params );
@@ -166,20 +178,26 @@ class ezcsseServerCallFunctions
 
         // Get style defintion object
         if ( !$styleDefinition instanceof ezcsseSiteStyleDefinition )
-            return;
+                {
+                    return;
+                }
 
         $style = ezcsseStyle::createFromXML( $styleDefinition->attribute( 'style' ) );
 
         if ( !$style instanceof ezcsseStyle )
-            return;
+                {
+                    return;
+                }
 
         $params = self::getPostParams();
         $selector = self::buildSelector( $params );
 
         $rule = $style->getRuleBySelector( $selector );
 
-        if( !$rule instanceof ezcsseRule )
-            return;
+        if ( !$rule instanceof ezcsseRule )
+                {
+                    return;
+                }
 
         $properties = isset( $params['properties'] ) ? $params['properties'] : array();
         $objectID = isset( $params['object_id'] ) ? $params['object_id'] : null;
@@ -189,15 +207,19 @@ class ezcsseServerCallFunctions
             $property = $rule->getProperty( $propIndex );
 
             if ( !$property instanceof ezcsseProperty )
-                continue;
+                    {
+                        continue;
+                    }
 
             $value = isset( $propValue['value'] ) ? strip_tags( $propValue['value'] ) : '';
 
             switch( $property->attribute( 'name' ) )
             {
                 case 'background-color':
-                    if( $value == '' )
-                        $value = 'transparent';
+                    if ( $value == '' )
+                            {
+                                $value = 'transparent';
+                            }
                 break;
             }
 
@@ -207,21 +229,31 @@ class ezcsseServerCallFunctions
             $property->setAttribute( 'keyword', $keyword );
             $property->setAttribute( 'length', $length );
 
-            if( $keyword != '' && $length != '' )
-                $property->setAttribute( 'value', $keyword . $length );
-            else if( $value != '' && $length != '' )
+            if ( $keyword != '' && $length != '' )
+                    {
+                        $property->setAttribute( 'value', $keyword . $length );
+                    }
+            else if ( $value != '' && $length != '' )
+            {
                 $property->setAttribute( 'value', $value . $length );
+            }
             else if ( $keyword != '' && $value == '' )
+            {
                 $property->setAttribute( 'value', $keyword );
+            }
             else
+            {
                 $property->setAttribute( 'value', $value );
+            }
         }
 
         $styleDefinition->setAttribute( 'style', $style->toXML() );
         $styleDefinition->store();
 
         if ( $objectID )
-            eZContentCacheManager::clearTemplateBlockCache( $objectID );
+                {
+                    eZContentCacheManager::clearTemplateBlockCache( $objectID );
+                }
 
         return $rule->toArray();
     }
@@ -260,7 +292,9 @@ class ezcsseServerCallFunctions
         $style = ezcsseStyle::createFromXML( $siteStyleDef->attribute( 'style' ) );
 
         if ( $objectID )
-            eZContentCacheManager::clearTemplateBlockCache( $objectID );
+                {
+                    eZContentCacheManager::clearTemplateBlockCache( $objectID );
+                }
 
         return $style->toArray();
     }
@@ -312,7 +346,9 @@ class ezcsseServerCallFunctions
         $style = ezcsseStyle::createFromXML( $style );
 
         if ( $objectID )
-            eZContentCacheManager::clearTemplateBlockCache( $objectID );
+                {
+                    eZContentCacheManager::clearTemplateBlockCache( $objectID );
+                }
 
         return $style->toArray();
     }
@@ -391,25 +427,31 @@ class ezcsseServerCallFunctions
             $contentINI = eZINI::instance( 'ezstyleeditor.ini' );
             $rep = $contentINI->variable( 'StyleEditor', 'ImageRepository' );
 
-            if ( is_numeric( $rep ) )
-                $contentNode = eZContentObjectTreeNode::fetch( $rep);
-            else
-            {
-                $nodeID = eZURLAliasML::fetchNodeIDByPath( $rep );
-                $contentNode = eZContentObjectTreeNode::fetch( $nodeID );
-            }
+        if ( is_numeric( $rep ) )
+                {
+                    $contentNode = eZContentObjectTreeNode::fetch( $rep );
+                }
+        else
+        {
+            $nodeID = eZURLAliasML::fetchNodeIDByPath( $rep );
+            $contentNode = eZContentObjectTreeNode::fetch( $nodeID );
+        }
 
             $upload = new eZContentUpload();
 
             $location = false;
-            if ( is_object( $contentNode ) )
-            $location = $contentNode->attribute( 'node_id' );
+        if ( is_object( $contentNode ) )
+                {
+                    $location = $contentNode->attribute( 'node_id' );
+                }
 
             $http = eZHTTPTool::instance();
 
             $fileName = '';
-            if ( $http->hasPostVariable( 'FileName' ) )
-                $fileName = $http->postVariable( 'FileName' );
+        if ( $http->hasPostVariable( 'FileName' ) )
+                {
+                    $fileName = $http->postVariable( 'FileName' );
+                }
 
             $success = $upload->handleUpload( $result, 'File', $location, false, $fileName );
     }
@@ -508,7 +550,9 @@ class ezcsseServerCallFunctions
 
         $name = null;
         if ( $siteStyle instanceof ezcsseSiteStyle )
-            $name = $siteStyle->attribute( 'name' );
+                {
+                    $name = $siteStyle->attribute( 'name' );
+                }
 
         $siteStyleVersions = ezcsseSiteStyleVersion::fetchObjectList( ezcsseSiteStyleVersion::definition(),
                                                                       null,
@@ -547,6 +591,34 @@ class ezcsseServerCallFunctions
     }
 
     /**
+     * Returns XHTML code with available site styles
+     *
+     * @static
+     * @param array $args
+     * @return string
+     */
+    public static function getSiteStylesTemplate( array $args )
+    {
+        $tpl = eZTemplate::factory();
+
+        return $tpl->fetch( 'design:styleeditor/site_styles.tpl' );
+    }
+
+    /**
+     * Returns XHTML code with site background styles
+     *
+     * @static
+     * @param array $args
+     * @return string
+     */
+    public static function getBackgroundTemplate( array $args )
+    {
+        $tpl = eZTemplate::factory();
+
+        return $tpl->fetch( 'design:styleeditor/background_styles.tpl' );
+    }
+
+    /**
      * A helper function which builds a selector from POST params
      *
      * @static
@@ -565,9 +637,13 @@ class ezcsseServerCallFunctions
             $id = isset( $element['id'] ) ? $element['id'] : null;
 
             if ( $name != '' && $id != '' )
-                $selector = strtolower( $name ) . '#' . $id;
+                    {
+                        $selector = strtolower( $name ) . '#' . $id;
+                    }
             else
+            {
                 $selector = strtolower( $name );
+            }
         }
 
         return $selector;
@@ -585,7 +661,9 @@ class ezcsseServerCallFunctions
 
         $params = array();
         if ( $http->hasPostVariable( 'Params' ) )
-            $params = $http->postVariable( 'Params' );
+                {
+                    $params = $http->postVariable( 'Params' );
+                }
 
         return $params;
     }

@@ -2,7 +2,7 @@
 YAHOO.namespace("ez");
 YAHOO.ez.colorPicker = function() {
 
-	var Event = YAHOO.util.Event,
+    var Event = YAHOO.util.Event,
         Dom = YAHOO.util.Dom,
         oCfg = {};
 

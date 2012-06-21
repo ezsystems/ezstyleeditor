@@ -24,4 +24,12 @@ $FunctionList['current_style'] = array( 'name' => 'current_style',
                                                                 'method' => 'fetchCurrentSiteStyle' ),
                                         'parameter_type' => 'standard',
                                         'parameters' => array() );
+
+$FunctionList['site_style_list'] = array( 'name' => 'site_style_list',
+                                          'operation_types' => array( 'read' ),
+                                          'call_method' => array( 'class' => 'ezcsseSiteStyleFunctions',
+                                                                  'method' => 'fetchSiteStyleList' ),
+                                          'parameter_type' => 'standard',
+                                          'parameters' => array() );
+
 ?>

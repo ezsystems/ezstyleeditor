@@ -38,7 +38,11 @@ class ezcsseSiteStyle extends eZPersistentObject
                                          'selected' => array( 'name' => "Selected",
                                                               'datatype' => 'integer',
                                                               'default' => 0,
-                                                              'required' => false ) ),
+                                                              'required' => false ),
+                                         'thumbnail' => array( 'name' => 'Thumbnail',
+                                                               'datatype' => 'string',
+                                                               'default' => '',
+                                                               'required' => false ) ),
                       'keys' => array( 'id' ),
                       'function_attributes' => array( 'version' => 'fetchCurrentVersion',
                                                       'style' => 'fetchCurrentStyleDef' ),
@@ -56,12 +60,46 @@ class ezcsseSiteStyle extends eZPersistentObject
      */
     public static function fetch( $id )
     {
-    	$siteStyle = ezcsseSiteStyle::fetchObject( ezcsseSiteStyle::definition(), 
+        $siteStyle = ezcsseSiteStyle::fetchObject( self::definition(),
                                                    null, 
                                                    array( 'id' => $id ) );
         return $siteStyle;
     }
-    
+
+    /**
+     * Fetches ezcsseSiteStyle object list
+     *
+     * @static
+     * @param bool $asObject
+     * @return mixed
+     */
+    public static function fetchList( $asObject = true )
+    {
+        $siteStyleList = parent::fetchObjectList( self::definition(),
+                                                  null,
+                                                  array(),
+                                                  null,
+                                                  null,
+                                                  $asObject );
+
+        return $siteStyleList;
+    }
+
+    /**
+     * Fetches currently selected site style
+     *
+     * @static
+     * @return mixed
+     */
+    public static function fetchCurrentSiteStyle()
+    {
+        $siteStyle = parent::fetchObject( self::definition(), null, array( 'selected' => 1 ) );
+
+        return $siteStyle;
+    }
+
+
+
     /**
      * Fetches current version object
      * 

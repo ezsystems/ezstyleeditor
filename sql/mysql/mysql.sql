@@ -2,9 +2,10 @@ CREATE TABLE IF NOT EXISTS `ezcssesitestyle` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT 'name',
   `current_version` int(11) NOT NULL,
-  `selected` smallint(6) DEFAULT 0,
+  `selected` smallint(6) DEFAULT '0',
+  `thumbnail` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `ezcssesitestyle_definition` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -12,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `ezcssesitestyle_definition` (
   `style` text,
   `version` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `ezcssesitestyle_version` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -21,4 +22,4 @@ CREATE TABLE IF NOT EXISTS `ezcssesitestyle_version` (
   `created` int(11) NOT NULL DEFAULT 0,
   `modified` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

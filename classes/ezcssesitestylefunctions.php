@@ -18,5 +18,18 @@ class ezcsseSiteStyleFunctions
         return array( 'result' => $siteStyle );
     }
 
+    /**
+     * Fetches list of available site styles
+     *
+     * @static
+     * @return array
+     */
+    public static function fetchSiteStyleList()
+    {
+        $siteStyles = ezcsseSiteStyle::fetchList();
+
+        return array( 'result' => $siteStyles );
+    }
+
 }
 ?>

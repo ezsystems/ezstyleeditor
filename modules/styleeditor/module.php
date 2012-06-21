@@ -9,6 +9,13 @@ $ViewList['visual'] = array( 'script' => 'visual.php',
                              'functions' => array( 'use' ),
                              'params' => array( 'NodeID', 'LanguageCode' ) );
 
+$ViewList['setsitestyle'] = array( 'script' => 'setsitestyle.php',
+                                   'functions' => array( 'use' ),
+                                   'single_post_actions' => array( 'StoreButton' => 'Store',
+                                                                   'CancelButton' => 'Cancel' ),
+                                   'post_action_parameters' => array( 'Store' => array( 'SiteStyleID' => 'SiteStyleID' ) ),
+                                   'params' => array( 'NodeID' ) );
+
 $FunctionList = array();
 $FunctionList['administrate'] = array();
 $FunctionList['use'] = array();
