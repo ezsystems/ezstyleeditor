@@ -1,3 +1,5 @@
+{def $current_node = fetch( 'content', 'node',  hash( 'node_id', '2' ) )}
+
 {ezscript_require( array( 'ezjsc::yui3', 'ezjsc::yui3io', 'ezjsc::yui2' ) )}
 
 <div id="style-editor"></div>
@@ -7,10 +9,10 @@
     YUI(YUI3_config).use( 'tabview', 'io-ez', function( Y ) {
 
         var tabs = [ {
-                     {/literal}
-                         label: "{'Color variations'|i18n( 'design/standard/syleeditor/embed' )}",
-                     {literal}
-                         call: 'getsitestylestemplate'
+                    {/literal}
+                        label: "{'Color variations'|i18n( 'design/standard/syleeditor/embed' )}",
+                        call: "{concat( 'getsitestylestemplate::', $current_node.node_id )}"
+                    {literal}
                      },
                      {
                      {/literal}

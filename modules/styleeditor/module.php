@@ -13,7 +13,8 @@ $ViewList['setsitestyle'] = array( 'script' => 'setsitestyle.php',
                                    'functions' => array( 'use' ),
                                    'single_post_actions' => array( 'StoreButton' => 'Store',
                                                                    'CancelButton' => 'Cancel' ),
-                                   'post_action_parameters' => array( 'Store' => array( 'SiteStyleID' => 'SiteStyleID' ) ),
+                                   'post_action_parameters' => array( 'Store' => array( 'SiteStyleID' => 'SiteStyleID',
+                                                                                        'ContentObjectID' => 'ContentObjectID' ) ),
                                    'params' => array( 'NodeID' ) );
 
 $FunctionList = array();

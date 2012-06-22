@@ -251,9 +251,9 @@ class ezcsseServerCallFunctions
         $styleDefinition->store();
 
         if ( $objectID )
-                {
-                    eZContentCacheManager::clearTemplateBlockCache( $objectID );
-                }
+        {
+            eZContentCacheManager::clearTemplateBlockCache( $objectID );
+        }
 
         return $rule->toArray();
     }
@@ -599,7 +599,18 @@ class ezcsseServerCallFunctions
      */
     public static function getSiteStylesTemplate( array $args )
     {
+        $nodeID = isset( $args[0] ) ? $args[0] : null;
+
+        $node = eZContentObjectTreeNode::fetch( $nodeID );
+        $object = null;
+
+        if ( $node instanceof eZContentObjectTreeNode )
+            $object = $node->object();
+
         $tpl = eZTemplate::factory();
+
+        $tpl->setVariable( 'node', $node );
+        $tpl->setVariable( 'object', $object );
 
         return $tpl->fetch( 'design:styleeditor/site_styles.tpl' );
     }

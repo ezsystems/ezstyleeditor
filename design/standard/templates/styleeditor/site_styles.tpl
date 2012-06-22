@@ -1,4 +1,4 @@
-<form action="{'/styleeditor/setsitestyle'|ezurl( 'no' )}" method="post">
+<form action="{concat( '/styleeditor/setsitestyle/', $node.node_id )|ezurl( 'no' )}" method="post">
     <div class="site-styles-container row">
 
         {def $site_styles = fetch( 'styleeditor', 'site_style_list' )}
@@ -22,5 +22,6 @@
     <div class="site-style-buttons">
         <input type="submit" value="{'Cancel'|i18n( 'design/standard/syleeditor/embed' )}" name="CancelButton" class="btn">
         <input type="submit" value="{'Store'|i18n( 'design/standard/syleeditor/embed' )}" name="StoreButton" class="btn btn-warning">
+        <input type="hidden" name="ContentObjectID" value="{$object.id}" />
     </div>
 </form>
