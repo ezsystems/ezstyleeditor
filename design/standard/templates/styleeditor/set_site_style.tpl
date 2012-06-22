@@ -20,7 +20,7 @@
                      },
                      {
                      {/literal}
-                         label: "{'Font settings'|i18n( 'design/standard/syleeditor/embed' )}",
+                         label: "{'Background settings'|i18n( 'design/standard/syleeditor/embed' )}",
                      {literal}
                          call: 'getbackgroundtemplate'
                      } ];

@@ -142,5 +142,9 @@
         <source>Please select a photo from your computer.</source>
         <translation>Bitte wählen Sie ein Foto von Ihrem Computer aus.</translation>
     </message>
+    <message>
+        <source>Background settings</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
