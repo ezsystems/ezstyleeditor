@@ -144,7 +144,7 @@
     </message>
     <message>
         <source>Background settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Hintergrund</translation>
     </message>
 </context>
 </TS>
