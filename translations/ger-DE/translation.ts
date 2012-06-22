@@ -2,125 +2,6 @@
 <!DOCTYPE TS>
 <TS version="2.0">
 <context>
-    <name>design/standard/datatype/edit/ezcssstyle</name>
-    <message>
-        <source>New CSS rule</source>
-        <translation type="obsolete">Neue CSS-Regel</translation>
-    </message>
-    <message>
-        <source>Alias:</source>
-        <translation type="obsolete">Alias:</translation>
-    </message>
-    <message>
-        <source>Selector:</source>
-        <translation type="obsolete">Auswahl:</translation>
-    </message>
-    <message>
-        <source>Create style</source>
-        <translation type="obsolete">Format erstellen</translation>
-    </message>
-    <message>
-        <source>Add property</source>
-        <translation type="obsolete">Eigenschaft hinzufügen</translation>
-    </message>
-    <message>
-        <source>Property:</source>
-        <translation type="obsolete">Eigenschaft:
-</translation>
-    </message>
-    <message>
-        <source>Style:</source>
-        <translation type="obsolete">Format:</translation>
-    </message>
-    <message>
-        <source>Add</source>
-        <translation type="obsolete">Hinzufügen</translation>
-    </message>
-    <message>
-        <source>Move up.</source>
-        <translation type="obsolete">Nach oben.</translation>
-    </message>
-    <message>
-        <source>Move down.</source>
-        <translation type="obsolete">Nach unten.</translation>
-    </message>
-    <message>
-        <source>Choose image</source>
-        <translation type="obsolete">Bild wählen</translation>
-    </message>
-    <message>
-        <source>Remove image</source>
-        <translation type="obsolete">Bild enfernen</translation>
-    </message>
-    <message>
-        <source>Remove properties</source>
-        <translation type="obsolete">Eigenschaften entfernen</translation>
-    </message>
-    <message>
-        <source>Remove rules</source>
-        <translation type="obsolete">Regeln entfernen</translation>
-    </message>
-    <message>
-        <source>Export</source>
-        <translation type="obsolete">Export</translation>
-    </message>
-    <message>
-        <source>Format:</source>
-        <translation type="obsolete">Format:</translation>
-    </message>
-    <message>
-        <source>XML</source>
-        <translation type="obsolete">XML</translation>
-    </message>
-    <message>
-        <source>CSS</source>
-        <translation type="obsolete">CSS</translation>
-    </message>
-    <message>
-        <source>JSON</source>
-        <translation type="obsolete">JSON</translation>
-    </message>
-</context>
-<context>
-    <name>design/standard/datatype/edit/ezcssstyle_images</name>
-    <message>
-        <source>Current image</source>
-        <translation type="obsolete">Aktuelles Bild</translation>
-    </message>
-    <message>
-        <source>No image selected.</source>
-        <translation type="obsolete">Es ist kein Bild ausgewählt.</translation>
-    </message>
-    <message>
-        <source>Available images</source>
-        <translation type="obsolete">Verfügbare Bilder</translation>
-    </message>
-    <message>
-        <source>Set</source>
-        <translation type="obsolete">Festlegen</translation>
-    </message>
-    <message>
-        <source>Upload new image</source>
-        <translation type="obsolete">Neues Bild laden</translation>
-    </message>
-    <message>
-        <source>Name:</source>
-        <translation type="obsolete">Name:</translation>
-    </message>
-    <message>
-        <source>File:</source>
-        <translation type="obsolete">Datei:</translation>
-    </message>
-    <message>
-        <source>Upload</source>
-        <translation type="obsolete">Upload</translation>
-    </message>
-    <message>
-        <source>Back</source>
-        <translation type="obsolete">Zurück</translation>
-    </message>
-</context>
-<context>
     <name>design/standard/ezcssstyle</name>
     <message>
         <source>Add</source>
@@ -220,9 +101,45 @@
     </message>
 </context>
 <context>
-    <name>extension/ezstyleeditor</name>
+    <name>design/standard/syleeditor/embed</name>
     <message>
-        <source>Image repository for given path / node ID does not exist. Please check ezstyleeditor.ini INI file configuration.</source>
+        <source>Please select photo from your computer.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Upload</source>
+        <translation type="unfinished">Upload</translation>
+    </message>
+    <message>
+        <source>Align right</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Align center</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Align left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Choose background color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Color variations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Font settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Abbrechen</translation>
+    </message>
+    <message>
+        <source>Store</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

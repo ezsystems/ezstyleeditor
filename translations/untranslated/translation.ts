@@ -101,9 +101,45 @@
     </message>
 </context>
 <context>
-    <name>extension/ezstyleeditor</name>
+    <name>design/standard/syleeditor/embed</name>
     <message>
-        <source>Image repository for given path / node ID does not exist. Please check ezstyleeditor.ini INI file configuration.</source>
+        <source>Please select photo from your computer.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Upload</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Align right</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Align center</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Align left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Choose background color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Color variations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Font settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Store</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

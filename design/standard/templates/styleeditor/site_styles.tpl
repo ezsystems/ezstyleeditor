@@ -20,7 +20,7 @@
     </div>
 
     <div class="site-style-buttons">
-        <input type="submit" value="{'Cancel'|i18n( 'design/standard/ezcssstyle' )}" name="CancelButton" class="btn">
-        <input type="submit" value="{'Store'|i18n( 'design/standard/ezcssstyle' )}" name="StoreButton" class="btn btn-warning">
+        <input type="submit" value="{'Cancel'|i18n( 'design/standard/syleeditor/embed' )}" name="CancelButton" class="btn">
+        <input type="submit" value="{'Store'|i18n( 'design/standard/syleeditor/embed' )}" name="StoreButton" class="btn btn-warning">
     </div>
 </form>

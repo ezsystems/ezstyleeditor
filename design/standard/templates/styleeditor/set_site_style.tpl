@@ -1,19 +1,29 @@
 {ezscript_require( array( 'ezjsc::yui3', 'ezjsc::yui3io', 'ezjsc::yui2' ) )}
 
-
-
 <div id="style-editor"></div>
 
 {literal}
 <script type="text/javascript">
     YUI(YUI3_config).use( 'tabview', 'io-ez', function( Y ) {
 
-        var tabs = [ { label: 'Color Settings',
-                       call: 'getsitestylestemplate' },
-                     { label: 'Font Settings',
-                       call: 'getfonttemplate' },
-                     { label: 'Background Settings',
-                       call: 'getbackgroundtemplate' } ];
+        var tabs = [ {
+                     {/literal}
+                         label: "{'Color variations'|i18n( 'design/standard/syleeditor/embed' )}",
+                     {literal}
+                         call: 'getsitestylestemplate'
+                     },
+                     {
+                     {/literal}
+                         label: "{'Font settings'|i18n( 'design/standard/syleeditor/embed' )}",
+                     {literal}
+                         call: 'getfonttemplate'
+                     },
+                     {
+                     {/literal}
+                         label: "{'Font settings'|i18n( 'design/standard/syleeditor/embed' )}",
+                     {literal}
+                         call: 'getbackgroundtemplate'
+                     } ];
 
         var tabView = new Y.TabView();
 
@@ -50,16 +60,8 @@
                           {literal}
                             });
 
-                            YUILoader.addModule({
-                                name: "styleeditorstylesheet",
-                                type: "css",
-                          {/literal}
-                                fullpath: "{'stylesheets/ezstyleeditor.css'|ezdesign( 'no' )}"
-                          {literal}
-                            });
-
-                            YUILoader.require(["button","colorpicker","container","menu","slider","utilities","styleeditorcolorpicker"]);
-                            YUILoader.insert({}, "js");
+                            YUILoader.require(["menu","slider","utilities","colorpicker","styleeditorcolorpicker"]);
+                            YUILoader.insert({},"js");
                         }
                     },
                     context: this.tab
