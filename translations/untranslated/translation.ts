@@ -103,10 +103,6 @@
 <context>
     <name>design/standard/syleeditor/embed</name>
     <message>
-        <source>Please select photo from your computer.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -140,6 +136,10 @@
     </message>
     <message>
         <source>Store</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please select a photo from your computer.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

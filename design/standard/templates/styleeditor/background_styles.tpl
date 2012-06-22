@@ -1,5 +1,5 @@
 <form action="{'/styleeditor/upload'|ezurl( 'no' )}" method="post" enctype="multipart/form-data">
-    <h3>{'Please select photo from your computer.'|i18n( 'design/standard/syleeditor/embed' )}</h3>
+    <h3>{'Please select a photo from your computer.'|i18n( 'design/standard/syleeditor/embed' )}</h3>
     <div class="row">
         <div class="span2">
             <ul class="thumbnails">

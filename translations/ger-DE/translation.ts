@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0">
+<TS version="2.0" language="de_DE" sourcelanguage="en_GB">
 <context>
     <name>design/standard/ezcssstyle</name>
     <message>
@@ -69,78 +69,78 @@
     </message>
     <message>
         <source>Restore</source>
-        <translation type="unfinished"></translation>
+        <translation>Wiederherstellen</translation>
     </message>
     <message>
         <source>Create</source>
-        <translation type="unfinished"></translation>
+        <translation>Schaffen</translation>
     </message>
     <message>
         <source>Version list</source>
-        <translation type="unfinished"></translation>
+        <translation>Version Liste</translation>
     </message>
     <message>
         <source>Rules for</source>
-        <translation type="unfinished"></translation>
+        <translation>Regeln für die</translation>
     </message>
     <message>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Version</translation>
     </message>
     <message>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>Erstellt</translation>
     </message>
     <message>
         <source>Modified</source>
-        <translation type="unfinished"></translation>
+        <translation>Geändert</translation>
     </message>
     <message>
         <source>Site style list</source>
-        <translation type="unfinished"></translation>
+        <translation>Site Style-Liste</translation>
     </message>
 </context>
 <context>
     <name>design/standard/syleeditor/embed</name>
     <message>
-        <source>Please select photo from your computer.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Upload</source>
-        <translation type="unfinished">Upload</translation>
+        <translation>Hochladen</translation>
     </message>
     <message>
         <source>Align right</source>
-        <translation type="unfinished"></translation>
+        <translation>Hintergrundbild Kacheln</translation>
     </message>
     <message>
         <source>Align center</source>
-        <translation type="unfinished"></translation>
+        <translation>Zentriert ausrichten</translation>
     </message>
     <message>
         <source>Align left</source>
-        <translation type="unfinished"></translation>
+        <translation>Linksbündig ausrichten</translation>
     </message>
     <message>
         <source>Choose background color</source>
-        <translation type="unfinished"></translation>
+        <translation>Hintergrundfarbe wählen</translation>
     </message>
     <message>
         <source>Color variations</source>
-        <translation type="unfinished"></translation>
+        <translation>Farbvarianten</translation>
     </message>
     <message>
         <source>Font settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Schrift Einstellungen </translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished">Abbrechen</translation>
+        <translation>Abbrechen</translation>
     </message>
     <message>
         <source>Store</source>
-        <translation type="unfinished"></translation>
+        <translation>Sichern</translation>
+    </message>
+    <message>
+        <source>Please select a photo from your computer.</source>
+        <translation>Bitte wählen Sie ein Foto von Ihrem Computer aus.</translation>
     </message>
 </context>
 </TS>
