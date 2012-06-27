@@ -20,8 +20,9 @@
     </div>
 
     <div class="site-style-buttons">
-        <input type="submit" value="{'Cancel'|i18n( 'design/standard/syleeditor/embed' )}" name="CancelButton" class="btn">
-        <input type="submit" value="{'Store'|i18n( 'design/standard/syleeditor/embed' )}" name="StoreButton" class="btn btn-warning">
+        <input type="submit" value="{'Cancel'|i18n( 'design/standard/syleeditor/embed' )}" name="CancelButton" class="btn" />
+        <input type="submit" value="{'Store'|i18n( 'design/standard/syleeditor/embed' )}" name="StoreButton" class="btn btn-warning" />
         <input type="hidden" name="ContentObjectID" value="{$object.id}" />
+        <input type="hidden" name="ezxform_token" value="{$form_token}" />
     </div>
 </form>

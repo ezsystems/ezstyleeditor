@@ -26,16 +26,16 @@ class ezcsseServerCallFunctions
 
         // Get style defintion object
         if ( !$styleDefinition instanceof ezcsseSiteStyleDefinition )
-                {
-                    return;
-                }
+        {
+            return;
+        }
 
         $style = ezcsseStyle::createFromXML( $styleDefinition->attribute( 'style' ) );
 
         if ( !$style instanceof ezcsseStyle )
-                {
-                    return;
-                }
+        {
+            return;
+        }
 
         $params = self::getPostParams();
         $selector = self::buildSelector( $params );
@@ -424,36 +424,67 @@ class ezcsseServerCallFunctions
      */
     public static function uploadImage()
     {
-            $contentINI = eZINI::instance( 'ezstyleeditor.ini' );
-            $rep = $contentINI->variable( 'StyleEditor', 'ImageRepository' );
+        $contentINI = eZINI::instance( 'ezstyleeditor.ini' );
+        $rep = $contentINI->variable( 'StyleEditor', 'ImageRepository' );
 
         if ( is_numeric( $rep ) )
-                {
-                    $contentNode = eZContentObjectTreeNode::fetch( $rep );
-                }
+        {
+            $contentNode = eZContentObjectTreeNode::fetch( $rep );
+        }
         else
         {
             $nodeID = eZURLAliasML::fetchNodeIDByPath( $rep );
             $contentNode = eZContentObjectTreeNode::fetch( $nodeID );
         }
 
-            $upload = new eZContentUpload();
+        $upload = new eZContentUpload();
 
-            $location = false;
+        $location = false;
         if ( is_object( $contentNode ) )
-                {
-                    $location = $contentNode->attribute( 'node_id' );
-                }
+        {
+            $location = $contentNode->attribute( 'node_id' );
+        }
 
-            $http = eZHTTPTool::instance();
+        $http = eZHTTPTool::instance();
 
-            $fileName = '';
+        $fileName = '';
         if ( $http->hasPostVariable( 'FileName' ) )
-                {
-                    $fileName = $http->postVariable( 'FileName' );
-                }
+        {
+            $fileName = $http->postVariable( 'FileName' );
+        }
 
-            $success = $upload->handleUpload( $result, 'File', $location, false, $fileName );
+        $success = $upload->handleUpload( $result, 'File', $location, false, $fileName );
+
+        $res = array( 'content' => '', 'errors' => $result['errors'] );
+
+        if ( isset( $result['contentobject'] )
+                && $result['contentobject'] instanceof eZContentObject )
+        {
+            $dataMap = $result['contentobject']->dataMap();
+            $content = $dataMap['image']->content();
+
+            // Create an image alias
+            $content->imageAlias( 'styleeditor' );
+
+            $aliasList = $content->aliasList();
+            $originalPath = $aliasList['original']['full_path'];
+            $path = $aliasList['styleeditor']['full_path'];
+            $width = $aliasList['styleeditor']['width'];
+            $height = $aliasList['styleeditor']['height'];
+
+            eZURI::transformURI( $originalPath, true );
+            eZURI::transformURI( $path, true );
+
+            $image = array();
+            $image['original_path'] = $originalPath;
+            $image['path'] = $path;
+            $image['width'] = $width;
+            $image['height'] = $height;
+
+            $res['content'] = $image;
+        }
+
+        return json_encode( $res );
     }
 
     /**
@@ -599,6 +630,8 @@ class ezcsseServerCallFunctions
      */
     public static function getSiteStylesTemplate( array $args )
     {
+        $http = eZHTTPTool::instance();
+
         $nodeID = isset( $args[0] ) ? $args[0] : null;
 
         $node = eZContentObjectTreeNode::fetch( $nodeID );
@@ -611,6 +644,7 @@ class ezcsseServerCallFunctions
 
         $tpl->setVariable( 'node', $node );
         $tpl->setVariable( 'object', $object );
+        $tpl->setVariable( 'form_token', $http->variable( 'ezxform_token' ) );
 
         return $tpl->fetch( 'design:styleeditor/site_styles.tpl' );
     }
@@ -624,7 +658,21 @@ class ezcsseServerCallFunctions
      */
     public static function getBackgroundTemplate( array $args )
     {
+        $http = eZHTTPTool::instance();
+
+        $nodeID = isset( $args[0] ) ? $args[0] : null;
+
+        $node = eZContentObjectTreeNode::fetch( $nodeID );
+        $object = null;
+
+        if ( $node instanceof eZContentObjectTreeNode )
+            $object = $node->object();
+
         $tpl = eZTemplate::factory();
+
+        $tpl->setVariable( 'node', $node );
+        $tpl->setVariable( 'object', $object );
+        $tpl->setVariable( 'form_token', $http->variable( 'ezxform_token' ) );
 
         return $tpl->fetch( 'design:styleeditor/background_styles.tpl' );
     }
@@ -672,9 +720,9 @@ class ezcsseServerCallFunctions
 
         $params = array();
         if ( $http->hasPostVariable( 'Params' ) )
-                {
-                    $params = $http->postVariable( 'Params' );
-                }
+        {
+            $params = $http->postVariable( 'Params' );
+        }
 
         return $params;
     }

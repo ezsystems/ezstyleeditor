@@ -41,5 +41,3 @@ if ( $module->isCurrentAction( 'Store' ) )
 
     }
 }
-
-eZExecution::cleanExit();

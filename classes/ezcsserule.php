@@ -55,9 +55,13 @@ class ezcsseRule
     public function attribute( $name )
     {
         if ( $this->hasAttribute( $name ) )
-            return $this->attributes[$name];
+                {
+                    return $this->attributes[$name];
+                }
         else
+        {
             return false;
+        }
     }
 
     /**
@@ -92,9 +96,13 @@ class ezcsseRule
     public function getProperty( $index )
     {
         if ( $this->attributes['properties'][$index] )
-            return $this->attributes['properties'][$index];
+                {
+                    return $this->attributes['properties'][$index];
+                }
         else
+        {
             return false;
+        }
     }
 
     /**
@@ -108,9 +116,11 @@ class ezcsseRule
         if ( isset( $this->attributes['properties'][$index] ) )
         {
             unset( $this->attributes['properties'][$index] );
-            
+
             if ( !isset( $this->attributes['properties'][$index] ) )
-                return true;
+                    {
+                        return true;
+                    }
         }
         else
         {
@@ -171,11 +181,15 @@ class ezcsseRule
                     foreach ( $attrValue as $property )
                     {
                         $json .= $property->toJSON();
-                        
+
                         if ( $propIndex == ( $propCount - 1 ) )
-                            $json .= ' ';
+                                {
+                                    $json .= ' ';
+                                }
                         else
+                        {
                             $json .= ', ';
+                        }
                         
                         $propIndex++;
                     }
@@ -186,11 +200,15 @@ class ezcsseRule
                     $json .= '"' . $attrName . '" : "' . $attrValue . '"';
                     break;
             }
-            
+
             if ( $index == ( $count - 1 ) )
-                $json .= ' ';
+                    {
+                        $json .= ' ';
+                    }
             else
+            {
                 $json .= ', ';
+            }
             
             $index++;
         }
@@ -251,6 +269,25 @@ class ezcsseRule
         $rule .= ezcsseStyle::newLine();
 
         return $rule;
+    }
+
+    /**
+     * Returns property by name
+     *
+     * @param $name
+     * @return bool|ezcsseProperty
+     */
+    public function getPropertyByName( $name )
+    {
+        foreach ( $this->attribute( 'properties' ) as $property )
+        {
+            if ( $property->attribute( 'name' ) == $name )
+            {
+                return $property;
+            }
+        }
+
+        return false;
     }
 
     /**
