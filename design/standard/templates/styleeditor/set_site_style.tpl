@@ -46,8 +46,12 @@
 
         Y.each( tabs, function( v, i ) {
 
-            var tab = new Y.Tab( { label:v.label,
-                                   content: "Loading..." } );
+            var tab = new Y.Tab( {
+                                   label:v.label,
+            {/literal}
+                                   content: "{'Loading ...'|i18n( 'design/standard/syleeditor/embed' )}"
+                                 } );
+            {literal}
             tab.after( "selectedChange", function(e) {
 
                 var callback = {

@@ -146,5 +146,21 @@
         <source>Background settings</source>
         <translation>Hintergrund</translation>
     </message>
+    <message>
+        <source>Repeat image vertically</source>
+        <translation>Bild vertikal wiederholen</translation>
+    </message>
+    <message>
+        <source>Repeat image horizontally</source>
+        <translation>Bild horizontal wiederholen</translation>
+    </message>
+    <message>
+        <source>Do not repeat image</source>
+        <translation>Bild nicht wiederholen</translation>
+    </message>
+    <message>
+        <source>Loading ...</source>
+        <translation>Loading ...</translation>
+    </message>
 </context>
 </TS>

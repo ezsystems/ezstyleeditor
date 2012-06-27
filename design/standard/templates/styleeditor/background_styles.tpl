@@ -29,6 +29,16 @@
     <label class="radio inline">
         <input type="radio" name="BackgroundPosition" value="top left" />{'Align left'|i18n( 'design/standard/syleeditor/embed' )}
     </label>
+    <br />
+    <label class="radio inline">
+        <input type="radio" name="BackgroundRepeat" value="repeat-y" checked="checked" />{'Repeat image vertically'|i18n( 'design/standard/syleeditor/embed' )}
+    </label>
+    <label class="radio inline">
+        <input type="radio" name="BackgroundRepeat" value="repeat-x" />{'Repeat image horizontally'|i18n( 'design/standard/syleeditor/embed' )}
+    </label>
+    <label class="radio inline">
+        <input type="radio" name="BackgroundRepeat" value="no-repeat" />{'Do not repeat image'|i18n( 'design/standard/syleeditor/embed' )}
+    </label>
     <div class="background-color">
         <label class="form-inline">{'Choose background color'|i18n( 'design/standard/syleeditor/embed' )}
             <input type="text" class="input-mini" name="BackgroundColor" value="" />

@@ -29,6 +29,7 @@ if ( $module->isCurrentAction( 'Store' ) )
             $rule = $style->getRuleBySelector( 'body' );
             $properties = array( 'background-image' => 'BackgroundImage',
                                  'background-position' => 'BackgroundPosition',
+                                 'background-repeat' => 'BackgroundRepeat',
                                  'background-color' => 'BackgroundColor' );
 
             if ( $rule instanceof ezcsseRule )

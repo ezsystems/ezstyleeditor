@@ -146,5 +146,21 @@
         <source>Background settings</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Repeat image vertically</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Repeat image horizontally</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do not repeat image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Loading ...</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
