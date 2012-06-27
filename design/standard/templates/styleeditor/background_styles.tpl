@@ -1,4 +1,4 @@
-<form action="{'/styleeditor/setbackground'|ezurl( 'no' )}" method="post" enctype="multipart/form-data" id="ezste-upload-form">
+<form action="{concat( '/styleeditor/setbackground/', $node.node_id )|ezurl( 'no' )}" method="post" enctype="multipart/form-data" id="ezste-upload-form">
     <h3>{'Please select a photo from your computer.'|i18n( 'design/standard/syleeditor/embed' )}</h3>
     <div class="row">
         <div class="span2">
