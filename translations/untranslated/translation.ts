@@ -162,5 +162,37 @@
         <source>Loading ...</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Heading 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Heading 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Heading 3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bullet points</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Link</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Link (hover)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Link (active)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

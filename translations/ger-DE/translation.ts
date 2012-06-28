@@ -162,5 +162,37 @@
         <source>Loading ...</source>
         <translation>Loading ...</translation>
     </message>
+    <message>
+        <source>Heading 1</source>
+        <translation>Überschrift 1</translation>
+    </message>
+    <message>
+        <source>Heading 2</source>
+        <translation>Überschrift 2</translation>
+    </message>
+    <message>
+        <source>Heading 3</source>
+        <translation>Überschrift 3</translation>
+    </message>
+    <message>
+        <source>Text</source>
+        <translation>Text</translation>
+    </message>
+    <message>
+        <source>Bullet points</source>
+        <translation>Stichpunkten</translation>
+    </message>
+    <message>
+        <source>Link</source>
+        <translation>Link</translation>
+    </message>
+    <message>
+        <source>Link (hover)</source>
+        <translation>Link (hover)</translation>
+    </message>
+    <message>
+        <source>Link (active)</source>
+        <translation>Link (aktiv)</translation>
+    </message>
 </context>
 </TS>

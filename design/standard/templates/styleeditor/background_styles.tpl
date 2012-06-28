@@ -43,7 +43,6 @@
         <label class="form-inline">{'Choose background color'|i18n( 'design/standard/syleeditor/embed' )}
             <input type="text" class="input-mini" name="BackgroundColor" value="" />
             <img src="{'color-picker-icon.gif'|ezimage( 'no' )}" alt="" class="colorpicker-icon" />
-            <em class="colorpicker-color" style="background-color: rgb(141, 210, 171); "></em>
         </label>
     </div>
     <div class="site-style-buttons">

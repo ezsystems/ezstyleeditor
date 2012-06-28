@@ -32,8 +32,8 @@
                      {
                      {/literal}
                          label: "{'Font settings'|i18n( 'design/standard/syleeditor/embed' )}",
+                         call: "{concat( 'getfonttemplate::', $current_node.node_id )}"
                      {literal}
-                         call: 'getfonttemplate'
                      },
                      {
                      {/literal}

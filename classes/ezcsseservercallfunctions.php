@@ -85,16 +85,16 @@ class ezcsseServerCallFunctions
 
         // Get style defintion object
         if ( !$styleDefinition instanceof ezcsseSiteStyleDefinition )
-                {
-                    return;
-                }
+        {
+            return;
+        }
 
         $style = ezcsseStyle::createFromXML( $styleDefinition->attribute( 'style' ) );
 
         if ( !$style instanceof ezcsseStyle )
-                {
-                    return;
-                }
+        {
+            return;
+        }
 
         $params = self::getPostParams();
         $selector = self::buildSelector( $params );
@@ -137,16 +137,16 @@ class ezcsseServerCallFunctions
 
         // Get style defintion object
         if ( !$styleDefinition instanceof ezcsseSiteStyleDefinition )
-                {
-                    return;
-                }
+        {
+            return;
+        }
 
         $style = ezcsseStyle::createFromXML( $styleDefinition->attribute( 'style' ) );
 
         if ( !$style instanceof ezcsseStyle )
-                {
-                    return;
-                }
+        {
+            return;
+        }
 
         $params = self::getPostParams();
         $selector = self::buildSelector( $params );
@@ -178,16 +178,16 @@ class ezcsseServerCallFunctions
 
         // Get style defintion object
         if ( !$styleDefinition instanceof ezcsseSiteStyleDefinition )
-                {
-                    return;
-                }
+        {
+            return;
+        }
 
         $style = ezcsseStyle::createFromXML( $styleDefinition->attribute( 'style' ) );
 
         if ( !$style instanceof ezcsseStyle )
-                {
-                    return;
-                }
+        {
+            return;
+        }
 
         $params = self::getPostParams();
         $selector = self::buildSelector( $params );
@@ -195,9 +195,9 @@ class ezcsseServerCallFunctions
         $rule = $style->getRuleBySelector( $selector );
 
         if ( !$rule instanceof ezcsseRule )
-                {
-                    return;
-                }
+        {
+            return;
+        }
 
         $properties = isset( $params['properties'] ) ? $params['properties'] : array();
         $objectID = isset( $params['object_id'] ) ? $params['object_id'] : null;
@@ -207,9 +207,9 @@ class ezcsseServerCallFunctions
             $property = $rule->getProperty( $propIndex );
 
             if ( !$property instanceof ezcsseProperty )
-                    {
-                        continue;
-                    }
+            {
+                continue;
+            }
 
             $value = isset( $propValue['value'] ) ? strip_tags( $propValue['value'] ) : '';
 
@@ -217,9 +217,9 @@ class ezcsseServerCallFunctions
             {
                 case 'background-color':
                     if ( $value == '' )
-                            {
-                                $value = 'transparent';
-                            }
+                    {
+                        $value = 'transparent';
+                    }
                 break;
             }
 
@@ -230,9 +230,9 @@ class ezcsseServerCallFunctions
             $property->setAttribute( 'length', $length );
 
             if ( $keyword != '' && $length != '' )
-                    {
-                        $property->setAttribute( 'value', $keyword . $length );
-                    }
+            {
+                $property->setAttribute( 'value', $keyword . $length );
+            }
             else if ( $value != '' && $length != '' )
             {
                 $property->setAttribute( 'value', $value . $length );
@@ -292,9 +292,9 @@ class ezcsseServerCallFunctions
         $style = ezcsseStyle::createFromXML( $siteStyleDef->attribute( 'style' ) );
 
         if ( $objectID )
-                {
-                    eZContentCacheManager::clearTemplateBlockCache( $objectID );
-                }
+        {
+            eZContentCacheManager::clearTemplateBlockCache( $objectID );
+        }
 
         return $style->toArray();
     }
@@ -346,9 +346,9 @@ class ezcsseServerCallFunctions
         $style = ezcsseStyle::createFromXML( $style );
 
         if ( $objectID )
-                {
-                    eZContentCacheManager::clearTemplateBlockCache( $objectID );
-                }
+        {
+            eZContentCacheManager::clearTemplateBlockCache( $objectID );
+        }
 
         return $style->toArray();
     }
@@ -581,9 +581,9 @@ class ezcsseServerCallFunctions
 
         $name = null;
         if ( $siteStyle instanceof ezcsseSiteStyle )
-                {
-                    $name = $siteStyle->attribute( 'name' );
-                }
+        {
+            $name = $siteStyle->attribute( 'name' );
+        }
 
         $siteStyleVersions = ezcsseSiteStyleVersion::fetchObjectList( ezcsseSiteStyleVersion::definition(),
                                                                       null,
@@ -678,6 +678,76 @@ class ezcsseServerCallFunctions
     }
 
     /**
+     * Returns XHTML code with font settings
+     *
+     * @static
+     * @param array $args
+     * @return string
+     */
+    public static function getFontTemplate( array $args )
+    {
+        $http = eZHTTPTool::instance();
+
+        $nodeID = isset( $args[0] ) ? $args[0] : null;
+
+        $node = eZContentObjectTreeNode::fetch( $nodeID );
+        $object = null;
+
+        if ( $node instanceof eZContentObjectTreeNode )
+            $object = $node->object();
+
+        $rules = array( 'h1' => ezpI18n::tr( 'design/standard/syleeditor/embed', 'Heading 1' ),
+                        'h2' => ezpI18n::tr( 'design/standard/syleeditor/embed', 'Heading 2' ),
+                        'h3' => ezpI18n::tr( 'design/standard/syleeditor/embed', 'Heading 3' ),
+                        'p' => ezpI18n::tr( 'design/standard/syleeditor/embed', 'Text' ),
+                        'ul' => ezpI18n::tr( 'design/standard/syleeditor/embed', 'Bullet points' ),
+                        'a' => ezpI18n::tr( 'design/standard/syleeditor/embed', 'Link' ),
+                        'a:hover' => ezpI18n::tr( 'design/standard/syleeditor/embed', 'Link (hover)' ),
+                        'a:active' => ezpI18n::tr( 'design/standard/syleeditor/embed', 'Link (active)' ) );
+
+        $styleDefinition = self::getStyleDefinition();
+
+        if ( $styleDefinition instanceof ezcsseSiteStyleDefinition )
+        {
+            $style = ezcsseStyle::createFromXML( $styleDefinition->attribute( 'style' ) );
+
+            if ( $style instanceof ezcsseStyle )
+            {
+                foreach ( $rules  as $selector => $alias )
+                {
+                    $rule = $style->getRuleBySelector( $selector );
+
+                    if ( $rule instanceof ezcsseRule )
+                    {
+                        $rule->setAttribute( 'alias', $alias );
+
+                        foreach( $rule->attribute( 'properties' ) as $property )
+                        {
+                            $propertyArray = ezcssePropertyFunctions::fetchPropertyByName( $property->attribute( 'name' ) );
+
+                            foreach( $propertyArray['result'] as $attrName => $attrValue )
+                            {
+                                $property->setAttribute( $attrName, $attrValue  );
+                            }
+                        }
+
+                        $rules[$selector] = $rule->toArray();
+                    }
+                }
+            }
+        }
+
+        $tpl = eZTemplate::factory();
+
+        $tpl->setVariable( 'node', $node );
+        $tpl->setVariable( 'object', $object );
+        $tpl->setVariable( 'rules', $rules );
+        $tpl->setVariable( 'form_token', $http->variable( 'ezxform_token' ) );
+
+        return $tpl->fetch( 'design:styleeditor/font_styles.tpl' );
+    }
+
+    /**
      * A helper function which builds a selector from POST params
      *
      * @static
@@ -696,9 +766,9 @@ class ezcsseServerCallFunctions
             $id = isset( $element['id'] ) ? $element['id'] : null;
 
             if ( $name != '' && $id != '' )
-                    {
-                        $selector = strtolower( $name ) . '#' . $id;
-                    }
+            {
+                $selector = strtolower( $name ) . '#' . $id;
+            }
             else
             {
                 $selector = strtolower( $name );

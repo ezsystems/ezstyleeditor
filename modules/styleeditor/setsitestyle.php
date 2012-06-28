@@ -41,3 +41,6 @@ if ( $module->isCurrentAction( 'Store' ) )
 
     }
 }
+
+$tpl = eZTemplate::factory();
+$Result['content'] = $tpl->fetch('design:styleeditor/set_site_style.tpl');
