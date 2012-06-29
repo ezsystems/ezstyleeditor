@@ -72,6 +72,7 @@
                             {literal}
                                 }
                                 YAHOO.ez.colorPicker.init();
+                                YAHOO.ez.Accordion.init();
                             }
                             YUILoader.addModule({
                                 name: "styleeditorcolorpicker",
@@ -80,8 +81,15 @@
                                 fullpath: "{'javascript/ezstyleeditorcolorpicker.js'|ezdesign( 'no' )}"
                             {literal}
                             });
+                            YUILoader.addModule({
+                                name: "styleeditoraccordion",
+                                type: "js",
+                            {/literal}
+                                fullpath: "{'javascript/ezstyleeditoraccordion.js'|ezdesign( 'no' )}"
+                            {literal}
+                            });
 
-                            YUILoader.require(["menu","slider","utilities","colorpicker","styleeditorcolorpicker"]);
+                            YUILoader.require(["menu","slider","utilities","colorpicker","styleeditorcolorpicker","styleeditoraccordion"]);
                             YUILoader.insert({},"js");
 
                             Y.on( "contentready", function() {

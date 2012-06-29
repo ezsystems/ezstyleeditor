@@ -64,7 +64,7 @@ YAHOO.ez.colorPicker = function() {
         oColorPickerMenu.show();
     };
 
-    var oColorPickerMenu = new YAHOO.widget.Menu("colorpicker-menu", { zindex: 1000 });
+    var oColorPickerMenu = new YAHOO.widget.Menu("colorpicker-menu", { zindex: 10000 });
 
     return  {
 

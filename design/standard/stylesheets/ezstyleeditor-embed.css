@@ -18,6 +18,49 @@
     padding: 20px 0;
 }
 
+.rule-container {
+    width: 50%;
+    margin-bottom: 2px;
+}
+
+.rule-header {
+    border:1px solid #CCCCCC;
+    padding: 8px;
+}
+
+.rule-properties {
+    padding: 10px;
+    border-left:  1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.trigger {
+    vertical-align: middle;
+    margin-right: 0.5em;
+    cursor: pointer;
+    display: block;
+    height: 15px;
+    width: 15px;
+    float: left;
+}
+
+.expand {
+    background-image: url(../images/expand.gif);
+}
+
+.collapse {
+    background-image: url(../images/collapse.gif);
+}
+
+.expanded {
+    display: block;
+}
+
+.collapsed {
+    display: none;
+}
+
 /*
     YUI2 Color Picker
 */

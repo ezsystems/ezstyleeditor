@@ -9,10 +9,13 @@
                     '%', '%' )}
 
 <form action="{concat( '/styleeditor/setfont/', $node.node_id )|ezurl( 'no' )}" method="post" class="form-horizontal">
-    {foreach $rules as $rule}
-    <div class="rule-container">
-        <div class="rule-header">{$rule.alias}</div>
-        <div class="rule-properties">
+    {foreach $rules as $id => $rule}
+    <div class="rule-container" id="rule-{$id}">
+        <div class="rule-header">
+            <em class="trigger expand"></em>
+            {$rule.alias}
+        </div>
+        <div class="rule-properties collapsed">
             <fieldset>
             {foreach $rule.properties as $index => $property}
                   <div class="control-group">
