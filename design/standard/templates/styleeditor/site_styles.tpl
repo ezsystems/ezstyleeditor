@@ -1,9 +1,9 @@
 <form action="{concat( '/styleeditor/setsitestyle/', $node.node_id )|ezurl( 'no' )}" method="post">
     <div class="site-styles-container row">
 
-        {def $site_styles = fetch( 'styleeditor', 'site_style_list' )}
+        {def $color_themes = fetch( 'styleeditor', 'group', hash( 'group_id', ezini( 'SiteStyleGroups', 'ColorThemeSettings', 'ezstyleeditor.ini' ) ) )}
 
-        {foreach $site_styles as $site_style}
+        {foreach $color_themes.style_list as $site_style}
         <div class="site-style span6">
             <div class="site-style-name">
                 <h3>{$site_style.name|wash()}</h3>

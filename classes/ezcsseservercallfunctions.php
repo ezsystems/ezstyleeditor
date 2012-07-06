@@ -668,10 +668,35 @@ class ezcsseServerCallFunctions
         if ( $node instanceof eZContentObjectTreeNode )
             $object = $node->object();
 
+        $siteStyleGroup = ezcsseSiteStyleGroup::fetch( eZINI::instance( 'ezstyleeditor.ini' )->variable( 'SiteStyleGroups', 'BackgroundSettings' ) );
+        $siteStyleList = $siteStyleGroup->attribute( 'style_list' );
+
+        $styleDefinition = $siteStyleList[0]->attribute( 'style' );
+
+        $properties = array();
+        if ( $styleDefinition instanceof ezcsseSiteStyleDefinition )
+        {
+            $style = ezcsseStyle::createFromXML( $styleDefinition->attribute( 'style' ) );
+
+            if ( $style instanceof ezcsseStyle )
+            {
+                $rule = $style->getRuleBySelector( 'body' );
+
+                if ( $rule instanceof ezcsseRule )
+                {
+                    foreach ( $rule->attribute( 'properties' ) as $property )
+                    {
+                        $properties[$property->attribute( 'name' )] = $property;
+                    }
+                }
+            }
+        }
+
         $tpl = eZTemplate::factory();
 
         $tpl->setVariable( 'node', $node );
         $tpl->setVariable( 'object', $object );
+        $tpl->setVariable( 'properties', $properties );
         $tpl->setVariable( 'form_token', $http->variable( 'ezxform_token' ) );
 
         return $tpl->fetch( 'design:styleeditor/background_styles.tpl' );
@@ -705,7 +730,11 @@ class ezcsseServerCallFunctions
                         'a:hover' => ezpI18n::tr( 'design/standard/syleeditor/embed', 'Link (hover)' ),
                         'a:active' => ezpI18n::tr( 'design/standard/syleeditor/embed', 'Link (active)' ) );
 
-        $styleDefinition = self::getStyleDefinition();
+
+        $siteStyleGroup = ezcsseSiteStyleGroup::fetch( eZINI::instance( 'ezstyleeditor.ini' )->variable( 'SiteStyleGroups', 'FontSettings' ) );
+        $siteStyleList = $siteStyleGroup->attribute( 'style_list' );
+
+        $styleDefinition = $siteStyleList[0]->attribute( 'style' );
 
         if ( $styleDefinition instanceof ezcsseSiteStyleDefinition )
         {

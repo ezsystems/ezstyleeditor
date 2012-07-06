@@ -32,4 +32,13 @@ $FunctionList['site_style_list'] = array( 'name' => 'site_style_list',
                                           'parameter_type' => 'standard',
                                           'parameters' => array() );
 
+$FunctionList['group'] = array( 'name' => 'property',
+                                'operation_types' => array( 'read' ),
+                                'call_method' => array( 'class' => 'ezcsseSiteStyleGroupFunctions',
+                                                        'method' => 'fetchGroup' ),
+                                'parameter_type' => 'standard',
+                                'parameters' => array( array( 'name' => 'group_id',
+                                                              'type' => 'string',
+                                                              'required' => true ) ) );
+
 ?>

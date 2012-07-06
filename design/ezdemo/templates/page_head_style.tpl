@@ -20,9 +20,15 @@
 <link rel="stylesheet" type="text/css" href={ezini('StylesheetSettings','SiteCSS','design.ini')|ezroot()} />
 <link rel="stylesheet" type="text/css" href={"stylesheets/print.css"|ezdesign} media="print" />
 
-{def $site_style = fetch('styleeditor', 'current_style')}
+{def $font_settings = fetch( 'styleeditor', 'group', hash( 'group_id', ezini( 'SiteStyleGroups', 'FontSettings', 'ezstyleeditor.ini' ) ) )
+     $background_settings = fetch( 'styleeditor', 'group', hash( 'group_id', ezini( 'SiteStyleGroups', 'BackgroundSettings', 'ezstyleeditor.ini' ) ) )
+     $site_style = fetch('styleeditor', 'current_style')}
 
 <style id="ezste-main-css" type="text/css">
+
+{$background_settings.style_list[0].style.css}
+
+{$font_settings.style_list[0].style.css}
 
 {$site_style.style.css}
 
