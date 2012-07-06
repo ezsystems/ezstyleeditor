@@ -119,6 +119,10 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Choose header background color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Choose background color</source>
         <translation type="unfinished"></translation>
     </message>

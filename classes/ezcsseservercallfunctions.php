@@ -673,20 +673,18 @@ class ezcsseServerCallFunctions
 
         $styleDefinition = $siteStyleList[0]->attribute( 'style' );
 
-        $properties = array();
+        $rules = array();
         if ( $styleDefinition instanceof ezcsseSiteStyleDefinition )
         {
             $style = ezcsseStyle::createFromXML( $styleDefinition->attribute( 'style' ) );
 
             if ( $style instanceof ezcsseStyle )
             {
-                $rule = $style->getRuleBySelector( 'body' );
-
-                if ( $rule instanceof ezcsseRule )
+                foreach ( $style->attribute( 'rules' ) as $rule )
                 {
                     foreach ( $rule->attribute( 'properties' ) as $property )
                     {
-                        $properties[$property->attribute( 'name' )] = $property;
+                        $rules[$rule->attribute( 'selector' )][$property->attribute( 'name' )] = $property;
                     }
                 }
             }
@@ -696,7 +694,7 @@ class ezcsseServerCallFunctions
 
         $tpl->setVariable( 'node', $node );
         $tpl->setVariable( 'object', $object );
-        $tpl->setVariable( 'properties', $properties );
+        $tpl->setVariable( 'rules', $rules );
         $tpl->setVariable( 'form_token', $http->variable( 'ezxform_token' ) );
 
         return $tpl->fetch( 'design:styleeditor/background_styles.tpl' );

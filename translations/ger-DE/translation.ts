@@ -119,6 +119,10 @@
         <translation>Linksbündig ausrichten</translation>
     </message>
     <message>
+        <source>Choose header background color</source>
+        <translation>Kopfzeile Hintergrundfarbe wählen</translation>
+    </message>
+    <message>
         <source>Choose background color</source>
         <translation>Hintergrundfarbe wählen</translation>
     </message>

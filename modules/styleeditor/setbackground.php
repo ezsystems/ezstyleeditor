@@ -28,23 +28,15 @@ if ( $module->isCurrentAction( 'Reset' ) )
 
         if ( $style instanceof ezcsseStyle )
         {
-            $rule = $style->getRuleBySelector( 'body' );
-            $properties = array( 'background-image' => 'BackgroundImage',
-                                 'background-position' => 'BackgroundPosition',
-                                 'background-repeat' => 'BackgroundRepeat',
-                                 'background-color' => 'BackgroundColor' );
+            $rules = $style->attribute( 'rules' );
 
-            if ( $rule instanceof ezcsseRule )
+            foreach ( $rules as $rule )
             {
-                foreach ( $properties as $name => $variable )
+                foreach( $rule->attribute( 'properties' ) as $property )
                 {
-                    $property = $rule->getPropertyByName( $name );
-
-                    if ( $property instanceof ezcsseProperty )
-                    {
-                        $property->setAttribute( 'value', '' );
-                    }
+                    $property->setAttribute( 'value', '' );
                 }
+
             }
 
             $styleDefinition->setAttribute( 'style', $style->toXML() );
@@ -76,21 +68,24 @@ if ( $module->isCurrentAction( 'Store' ) )
 
         if ( $style instanceof ezcsseStyle )
         {
-            $rule = $style->getRuleBySelector( 'body' );
-            $properties = array( 'background-image' => 'BackgroundImage',
-                                 'background-position' => 'BackgroundPosition',
-                                 'background-repeat' => 'BackgroundRepeat',
-                                 'background-color' => 'BackgroundColor' );
+            $rules = $http->variable( 'Rules' );
 
-            if ( $rule instanceof ezcsseRule )
+            foreach ( $rules as $selector => $params )
             {
-                foreach ( $properties as $name => $variable )
-                {
-                    $property = $rule->getPropertyByName( $name );
+                $rule = $style->getRuleBySelector( $selector );
 
-                    if ( $property instanceof ezcsseProperty )
+                if ( $rule instanceof ezcsseRule )
+                {
+                    foreach( $params['properties'] as $propName => $propValue )
                     {
-                        $property->setAttribute( 'value', $http->variable( $variable ) );
+                        $property = $rule->getPropertyByName( $propName );
+
+                        if ( !$property instanceof ezcsseProperty )
+                        {
+                            continue;
+                        }
+
+                        $property->setAttribute( 'value', strip_tags( $propValue['value'] ) );
                     }
                 }
             }
