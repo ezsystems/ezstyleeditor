@@ -30,6 +30,7 @@
                         {/case}
                         {case match='font'}
                             <select name="Rules[{$rule.selector}][properties][{$index}][value]">
+                                <option value="">{'Please choose'|i18n( 'design/standard/syleeditor/embed' )}</option>
                             {foreach $property.options as $option}
                                 <option value="{$option}"{if eq( $property.value, $option )} selected="selected"{/if}>{$option}</option>
                             {/foreach}
@@ -37,12 +38,14 @@
                         {/case}
                         {case match='keyword-length'}
                             <input name="Rules[{$rule.selector}][properties][{$index}][value]" class="input-mini" />
-                            <select name="Rules[{$rule.selector}][properties][{$index}][keyword]" class="input-mini">
+                            <select name="Rules[{$rule.selector}][properties][{$index}][keyword]" class="input-small">
+                                <option value="">{'Please choose'|i18n( 'design/standard/syleeditor/embed' )}</option>
                             {foreach $property.options as $option}
                                 <option value="{$option}"{if eq( $property.keyword, $option )} selected="selected"{/if}>{$option}</option>
                             {/foreach}
                             </select>
-                            <select name="Rules[{$rule.selector}][properties][{$index}][length]" class="input-mini">
+                            <select name="Rules[{$rule.selector}][properties][{$index}][length]" class="input-small">
+                                <option value="">{'Please choose'|i18n( 'design/standard/syleeditor/embed' )}</option>
                             {foreach $units as $unit => $length}
                                 <option value="{$unit}"{if eq( $property.length, $unit )} selected="selected"{/if}>{$length}</option>
                             {/foreach}
@@ -53,6 +56,7 @@
                         {/case}
                         {case match='enumerated'}
                             <select name="Rules[{$rule.selector}][properties][{$index}][value]" class="input-medium">
+                                <option value="">{'Please choose'|i18n( 'design/standard/syleeditor/embed' )}</option>
                             {foreach $property.options as $option}
                                 <option value="{$option}"{if eq( $property.value, $option )} selected="selected"{/if}>{$option}</option>
                             {/foreach}

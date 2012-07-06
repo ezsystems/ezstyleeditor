@@ -131,6 +131,10 @@
         <translation>Schrift Einstellungen </translation>
     </message>
     <message>
+        <source>Please choose</source>
+        <translation>Bitte auswählen</translation>
+    </message>
+    <message>
         <source>Reset</source>
         <translation>Zurücksetzen</translation>
     </message>

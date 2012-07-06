@@ -131,6 +131,10 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Please choose</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Reset</source>
         <translation type="unfinished"></translation>
     </message>
