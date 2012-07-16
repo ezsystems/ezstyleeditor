@@ -104,9 +104,24 @@ YAHOO.ez.Accordion = function(){
         }
     };
 
+    var collapseOthers = function(expandedEl) {
+        var triggers = getTriggers();
+
+        for( var i = 0; i < triggers.length; i++ ) {
+            var triggerEl = triggers[i];
+
+            if(triggerEl.nodeName.toLowerCase() == "em"
+                && triggerEl != expandedEl) {
+                collapseBlock(triggerEl);
+            }
+        }
+    };
+
     var triggerAction = function(e, triggerEl) {
         if( Dom.hasClass( triggerEl, "expand" ) ) {
             expandBlock(triggerEl);
+
+            collapseOthers(triggerEl);
         }
         else if( Dom.hasClass( triggerEl, "collapse" ) ) {
             collapseBlock(triggerEl);
