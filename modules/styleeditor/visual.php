@@ -1,7 +1,4 @@
 <?php
-
-include_once( 'kernel/common/template.php' );
-
 $Module = $Params['Module'];
 
 if ( isset( $Params['NodeID'] ) )
@@ -73,7 +70,7 @@ else
 }
 
 
-$tpl = templateInit();
+$tpl = eZTemplate::factory();
 $ini = eZINI::instance();
 $http = eZHTTPTool::instance();
 
